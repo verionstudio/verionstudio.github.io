@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VÉRION STUDIO | Creative Advertising</title>
+<meta name="description" content="Premium creative advertising and visual storytelling.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#080808;color:#eee;font-family:Arial,sans-serif}
+:root{--gold:#d6b779}
+a{text-decoration:none;color:inherit}
+header{height:80px;padding:0 8%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #252525}
+.logo{font-family:Georgia,serif;font-size:22px;letter-spacing:3px;color:var(--gold)}
+nav{display:flex;gap:24px;font-size:11px;letter-spacing:1px;color:#bbb}
+nav a:hover{color:var(--gold)}
+.hero{min-height:650px;padding:120px 8%;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 75% 45%,#302417,#111 38%,#080808 75%)}
+.eyebrow,.section-label{color:var(--gold);font-size:11px;letter-spacing:4px;margin-bottom:28px}
+h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(48px,8vw,95px);line-height:1.1}
+h1 span{color:var(--gold);font-style:italic}
+.hero p,.intro{color:#999;max-width:520px;line-height:1.9;margin-top:25px;font-size:15px}
+.cta{display:inline-block;margin-top:35px;padding:15px 25px;border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:2px;width:fit-content}
+section{padding:100px 8%}
+h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(36px,5vw,58px);margin-bottom:20px}
+</style>
+</head>
+<style>
+.services,.about{background:#101010}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;margin-top:55px}
+.service{border-top:1px solid #444;padding-top:25px}
+.service h3{font-family:Georgia,serif;font-size:24px;font-weight:400;color:var(--gold);margin-bottom:15px}
+.service p{font-size:13px;line-height:1.8;color:#999}
+.project{margin-top:45px;max-width:850px;border:1px solid #292929}
+.project-visual{height:320px;background:radial-gradient(ellipse at center,#302417,#111 50%,#080808);display:flex;align-items:center;justify-content:center;flex-direction:column}
+.project-visual strong{font-family:Georgia,serif;font-size:65px;font-weight:400;letter-spacing:8px;color:var(--gold)}
+.project-visual small{font-size:10px;letter-spacing:5px;color:#b8a17a;margin-top:12px}
+.project-info{padding:25px}
+.project-info h3{font-family:Georgia,serif;font-size:23px;font-weight:400}
+.project-info p{color:#888;font-size:12px;margin-top:9px}
+.tag{color:var(--gold);font-size:10px;letter-spacing:2px;margin-top:15px}
+.contact{text-align:center}
+.contact .intro{margin:0 auto}
+.contact .cta{margin-left:auto;margin-right:auto}
+footer{border-top:1px solid #252525;padding:30px 8%;display:flex;justify-content:space-between;color:#777;font-size:11px;letter-spacing:1px}
+@media(max-width:700px){
+header{padding:0 5%;height:75px}
+.logo{font-size:16px;letter-spacing:1px}
+nav{gap:9px;font-size:9px}
+.hero{min-height:570px;padding:100px 7%}
+section{padding:75px 7%}
+.service-grid{grid-template-columns:1fr}
+.project-visual{height:240px}
+.project-visual strong{font-size:45px}
+footer{padding:25px 7%;gap:15px;flex-direction:column}
+}
+</style>
+<body>
+<header>
+<a class="logo" href="#">VÉRION STUDIO</a>
+<nav>
+<a href="#services">SERVICES</a>
+<a href="#work">WORK</a>
+<a href="#about">ABOUT</a>
+<a href="#contact">CONTACT</a>
+</nav>
+</header>
 
+<main>
+<section class="hero">
+<div class="eyebrow">INDEPENDENT CREATIVE STUDIO</div>
+<h1>Ideas deserve<br>to be <span>seen.</span></h1>
+<p>We create refined visual advertising that gives brands a distinctive presence. Thoughtful concepts. Powerful visuals. Lasting impressions.</p>
+<a class="cta" href="#work">EXPLORE OUR WORK</a>
+</section>
+
+<section class="services" id="services">
+<div class="section-label">WHAT WE DO</div>
+<h2>Creative, with intention.</h2>
+<p class="intro">From the first idea to the final frame, we build visual experiences designed to make brands stand out.</p>
+<div class="service-grid">
+<div class="service">
+<h3>Product Films</h3>
+<p>Premium product advertisements that highlight detail, identity and desire.</p>
+</div>
+<div class="service">
+<h3>Brand Visuals</h3>
+<p>Distinctive visual content that gives brands a consistent and recognisable identity.</p>
+</div>
+<div class="service">
+<h3>Creative Direction</h3>
+<p>Concepts, storytelling and visual direction shaped around each brand.</p>
+</div>
+</div>
+</section>
+<section id="work">
+<div class="section-label">SELECTED WORK</div>
+<h2>Made to leave a mark.</h2>
+<p class="intro">A growing collection of creative concepts and visual experiments.</p>
+
+<div class="project">
+<div class="project-visual">
+<strong>NOIRÉ</strong>
+<small>EAU DE PARFUM</small>
+</div>
+<div class="project-info">
+<h3>NOIRÉ — A Fragrance Film</h3>
+<p>A premium fragrance advertising concept.</p>
+<div class="tag">SPEC ADVERTISEMENT · 2026</div>
+</div>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="section-label">ABOUT THE STUDIO</div>
+<h2>Beyond the ordinary.</h2>
+<p class="intro">VÉRION STUDIO is an independent creative studio focused on visual storytelling, thoughtful design and distinctive advertising. We believe every brand deserves to be presented with intention.</p>
+</section>
+
+<section class="contact" id="contact">
+<div class="section-label">LET'S CREATE</div>
+<h2>Have a vision?</h2>
+<p class="intro">Let's turn your next idea into something worth remembering.</p>
+<a class="cta" href="mailto:YOUR-EMAIL-HERE">GET IN TOUCH</a>
+</section>
+</main>
+
+<footer>
+<span>© 2026 VÉRION STUDIO</span>
+<span>INDEPENDENT CREATIVE STUDIO</span>
+</footer>
+</body>
+</html>
