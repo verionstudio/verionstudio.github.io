@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Advertisements | VÉRION STUDIO</title>
+<meta name="description" content="Explore creative advertisements by VÉRION STUDIO.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #080808;
+    color: #f5f0e8;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 26px 7%;
+    border-bottom: 1px solid #29251f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #d6bd8a;
+    font-size: 20px;
+    letter-spacing: 4px;
+}
+
+nav a {
+    color: #d6bd8a;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.intro {
+    text-align: center;
+    padding: 85px 20px 65px;
+}
+
+.intro p {
+    color: #bba77e;
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.ad-card {
+    width: min(900px, 90%);
+    margin: 0 auto 100px;
+    text-align: center;
+}
+
+.ad-title {
+    color: #d6bd8a;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-bottom: 13px;
+}
+
+.ad-description {
+    color: #aaa39a;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    aspect-ratio: 9 / 16;
+    background: #111;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 22px 6%;
+    }
+
+    .intro {
+        padding: 70px 15px 50px;
+    }
+
+    .ad-card {
+        margin-bottom: 75px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">VÉRION STUDIO</div>
+    <nav>
+        <a href="index.html">HOME</a>
+    </nav>
+</header>
+
+<section class="intro">
+    <p>CREATIVE WORK. DISTINCTIVE STORIES.</p>
+    <h1>OUR ADVERTISEMENTS</h1>
+</section>
+
+<main id="advertisements">
+
+    <!-- ADVERTISEMENT 1: NOIRÉ -->
+    <article class="ad-card">
+        <h2 class="ad-title">NOIRÉ</h2>
+
+        <p class="ad-description">
+            CINEMATIC PERFUME ADVERTISEMENT · CONCEPT PROJECT
+        </p>
+
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/B4neyYsIuYE"
+                title="NOIRÉ by VÉRION STUDIO"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </article>
+
+    <!-- ADD NEW ADVERTISEMENT CARDS BELOW THIS LINE -->
+
+</main>
+
+</body>
+</html>
