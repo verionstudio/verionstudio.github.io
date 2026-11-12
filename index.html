@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
 
-<title>VÉRION STUDIO | Creative Advertising</title>
-<meta name="description" content="VÉRION STUDIO creates distinctive advertisements, promotional films and visual campaigns for brands.">
+<title>VÉRION STUDIO | Creative Advertising Agency</title>
+<meta name="description" content="VÉRION STUDIO creates cinematic advertisements, brand films and distinctive visual campaigns.">
 
 <style>
 :root {
-    --background: #080808;
-    --surface: #101010;
-    --gold: #d6bd8a;
-    --gold-light: #ead8b2;
-    --white: #f5f0e8;
-    --muted: #a49d91;
-    --line: #29251f;
+    --black: #080808;
+    --dark: #0d0d0c;
+    --gold: #cbb080;
+    --gold-light: #e5d1a7;
+    --white: #f3eee5;
+    --muted: #aaa49a;
+    --line: rgba(203,176,128,0.22);
 }
 
 * {
@@ -26,9 +27,9 @@
 }
 
 body {
-    background: var(--background);
+    background: var(--black);
     color: var(--white);
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica Neue", Arial, sans-serif;
     line-height: 1.7;
 }
 
@@ -38,185 +39,225 @@ a {
 }
 
 header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(8,8,8,0.96);
+    width: 100%;
+    background: rgba(8,8,8,0.97);
     border-bottom: 1px solid var(--line);
 }
 
 .navbar {
-    min-height: 78px;
+    min-height: 88px;
     padding: 0 7%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 35px;
 }
 
 .logo {
-    color: var(--gold);
-    font-size: 20px;
-    letter-spacing: 4px;
+    color: var(--gold-light);
+    font-size: 21px;
+    letter-spacing: 5px;
     white-space: nowrap;
+    font-weight: 400;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 32px;
+    justify-content: flex-end;
+    gap: 29px;
+    white-space: nowrap;
 }
 
 .nav-links a {
-    color: #d8d0c3;
-    font-size: 11px;
-    letter-spacing: 1.5px;
+    color: #d4cec3;
+    font-size: 10px;
+    letter-spacing: 1.8px;
     transition: color .3s;
 }
 
 .nav-links a:hover {
-    color: var(--gold);
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: 1px solid var(--line);
-    color: var(--gold);
-    font-size: 24px;
-    padding: 3px 12px;
-    cursor: pointer;
+    color: var(--gold-light);
 }
 
 .hero {
-    min-height: 650px;
-    padding: 130px 8%;
+    min-height: 690px;
+    padding: 120px 8%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
     background:
-        radial-gradient(ellipse at center, #211b12 0%, #0c0b09 38%, #080808 75%);
+        radial-gradient(ellipse at 50% 45%, rgba(137,105,58,0.17), transparent 55%),
+        linear-gradient(180deg, #0b0b0a, #080808);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 35px;
+    border: 1px solid rgba(203,176,128,0.08);
+    pointer-events: none;
 }
 
 .eyebrow {
     color: var(--gold);
-    font-size: 11px;
-    letter-spacing: 5px;
-    margin-bottom: 25px;
+    font-size: 10px;
+    letter-spacing: 6px;
+    margin-bottom: 30px;
 }
 
 .hero h1 {
-    font-size: clamp(38px, 7vw, 76px);
+    font-family: Georgia, "Times New Roman", serif;
     font-weight: 400;
-    letter-spacing: 2px;
-    line-height: 1.2;
-    max-width: 900px;
+    font-size: clamp(42px, 6.5vw, 76px);
+    line-height: 1.18;
+    letter-spacing: 1px;
 }
 
 .hero h1 span {
-    color: var(--gold);
+    color: var(--gold-light);
+    font-style: italic;
 }
 
 .hero-description {
+    max-width: 590px;
     color: var(--muted);
-    max-width: 570px;
-    margin: 25px auto 35px;
     font-size: 14px;
+    line-height: 2;
+    margin: 28px auto 38px;
 }
 
 .primary-link {
     display: inline-block;
     border: 1px solid var(--gold);
     color: var(--gold-light);
-    padding: 13px 28px;
-    font-size: 11px;
-    letter-spacing: 2px;
+    padding: 14px 32px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     transition: .3s;
 }
 
 .primary-link:hover {
     background: var(--gold);
-    color: #080808;
+    color: var(--black);
 }
 
-section.content-section {
-    padding: 105px 8%;
+.section {
+    padding: 110px 8%;
 }
 
 .section-heading {
     text-align: center;
-    margin-bottom: 55px;
+    margin-bottom: 65px;
 }
 
-.section-heading p {
+.section-heading .overline {
     color: var(--gold);
     font-size: 10px;
     letter-spacing: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .section-heading h2 {
-    font-size: clamp(28px, 4vw, 42px);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(31px, 4vw, 45px);
     font-weight: 400;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+}
+
+.section-heading .line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 24px auto 0;
+}
+
+.services {
+    background: var(--black);
 }
 
 .services-grid {
+    max-width: 1100px;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    max-width: 1050px;
-    margin: auto;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
 }
 
-.service {
-    background: var(--background);
-    padding: 38px;
+.service-card {
+    min-height: 210px;
+    padding: 38px 40px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    transition: background .3s;
+}
+
+.service-card:hover {
+    background: #11100e;
 }
 
 .service-number {
     color: var(--gold);
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 3px;
 }
 
-.service h3 {
-    font-size: 19px;
+.service-card h3 {
+    color: var(--white);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
     font-weight: 400;
-    margin: 15px 0 10px;
-    letter-spacing: 1px;
+    margin: 18px 0 12px;
 }
 
-.service p {
+.service-card p {
     color: var(--muted);
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1.9;
 }
 
 .portfolio {
-    background: var(--surface);
     text-align: center;
+    background:
+        radial-gradient(ellipse at center, rgba(137,105,58,0.12), transparent 65%),
+        #0d0d0c;
+    border-top: 1px solid rgba(203,176,128,0.08);
+    border-bottom: 1px solid rgba(203,176,128,0.08);
 }
 
-.portfolio p {
+.portfolio-description {
+    max-width: 580px;
     color: var(--muted);
-    max-width: 570px;
-    margin: 18px auto 30px;
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 2;
+    margin: -20px auto 34px;
 }
 
 .text-link {
-    color: var(--gold);
-    font-size: 11px;
-    letter-spacing: 2px;
+    display: inline-block;
+    color: var(--gold-light);
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    padding-bottom: 8px;
     border-bottom: 1px solid var(--gold);
-    padding-bottom: 7px;
+    transition: .3s;
+}
+
+.text-link:hover {
+    color: white;
+}
+
+.about {
+    background: var(--black);
 }
 
 .about-content {
-    max-width: 760px;
+    max-width: 790px;
     margin: auto;
     text-align: center;
 }
@@ -224,75 +265,103 @@ section.content-section {
 .about-content p {
     color: var(--muted);
     font-size: 14px;
-    margin-top: 18px;
+    line-height: 2.1;
+    margin-bottom: 20px;
+}
+
+.process {
+    background: #0d0d0c;
 }
 
 .process-grid {
+    max-width: 1150px;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    max-width: 1100px;
-    margin: auto;
+    gap: 25px;
 }
 
-.process-item {
+.process-card {
     border-top: 1px solid var(--gold);
-    padding-top: 20px;
+    padding-top: 24px;
 }
 
-.process-item span {
+.process-card .step {
     color: var(--gold);
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-.process-item h3 {
-    font-size: 16px;
-    font-weight: 400;
-    margin: 12px 0;
-}
-
-.process-item p {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.contact {
-    background: var(--surface);
-    text-align: center;
-}
-
-.contact p {
-    color: var(--muted);
-    font-size: 14px;
-    margin: 15px auto 25px;
-    max-width: 550px;
-}
-
-/* ADD FUTURE CONTACT OPTIONS BELOW THIS LINE */
-
-.contact-options {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-/* END OF CONTACT OPTIONS AREA */
-
-footer {
-    padding: 25px 7%;
-    border-top: 1px solid var(--line);
-    text-align: center;
-    color: #77716a;
     font-size: 10px;
     letter-spacing: 2px;
 }
 
-@media (max-width: 760px) {
+.process-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    font-weight: 400;
+    margin: 17px 0 12px;
+}
+
+.process-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.contact {
+    text-align: center;
+    background:
+        radial-gradient(ellipse at center, rgba(137,105,58,0.12), transparent 65%),
+        var(--black);
+}
+
+.contact-description {
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 550px;
+    margin: -25px auto 35px;
+    line-height: 2;
+}
+
+/* FUTURE CONTACT OPTIONS: ADD NEW CONTACT LINKS BELOW */
+
+.contact-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.contact-link {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 12px 25px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+.contact-link:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* END CONTACT OPTIONS */
+
+footer {
+    border-top: 1px solid var(--line);
+    padding: 27px 6%;
+    text-align: center;
+    color: #77716a;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+}
+
+/* KEEP THE SAME HORIZONTAL DESIGN ON SMALL SCREENS */
+
+@media (max-width: 950px) {
     .navbar {
-        min-height: 70px;
-        padding: 0 6%;
+        padding: 0 4%;
+        gap: 20px;
     }
 
     .logo {
@@ -300,54 +369,114 @@ footer {
         letter-spacing: 3px;
     }
 
-    .menu-toggle {
-        display: block;
-    }
-
     .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: #0c0c0c;
-        border-bottom: 1px solid var(--line);
-        padding: 25px 6%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 22px;
+        gap: 15px;
     }
 
-    .nav-links.active {
-        display: flex;
+    .nav-links a {
+        font-size: 9px;
+        letter-spacing: 1px;
     }
 
-    .hero {
-        min-height: 570px;
-        padding: 90px 7%;
+    .section {
+        padding: 85px 5%;
     }
 
-    section.content-section {
-        padding: 80px 7%;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .service {
-        padding: 30px;
+    .service-card {
+        padding: 28px 24px;
     }
 
     .process-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 35px 22px;
+        gap: 16px;
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
+    .navbar {
+        min-height: 75px;
+        padding: 0 16px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 9px;
+        overflow: hidden;
+    }
+
+    .logo {
+        font-size: 17px;
+        letter-spacing: 4px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 21px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding: 3px 0 8px;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        font-size: 9px;
+        flex-shrink: 0;
+    }
+
+    .hero {
+        min-height: 590px;
+        padding: 90px 8%;
+    }
+
+    .hero::before {
+        inset: 15px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .section {
+        padding: 75px 6%;
+    }
+
+    .section-heading {
+        margin-bottom: 45px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .service-card {
+        min-height: 205px;
+        padding: 20px 14px;
+    }
+
+    .service-card h3 {
+        font-size: 17px;
+    }
+
+    .service-card p {
+        font-size: 10px;
+    }
+
     .process-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px 18px;
+    }
+
+    .process-card h3 {
+        font-size: 17px;
+    }
+
+    .process-card p {
+        font-size: 10px;
     }
 }
 </style>
@@ -359,15 +488,7 @@ footer {
     <nav class="navbar">
         <a href="index.html" class="logo">VÉRION STUDIO</a>
 
-        <button class="menu-toggle"
-                id="menuToggle"
-                aria-label="Open navigation"
-                aria-expanded="false"
-                aria-controls="navLinks">
-            ☰
-        </button>
-
-        <div class="nav-links" id="navLinks">
+        <div class="nav-links">
             <a href="#home">HOME</a>
             <a href="#services">SERVICES</a>
             <a href="advertisements.html">OUR ADVERTISEMENTS</a>
@@ -381,17 +502,17 @@ footer {
 <main>
 
 <section class="hero" id="home">
-    <p class="eyebrow">VÉRION STUDIO</p>
+    <p class="eyebrow">INDEPENDENT CREATIVE ADVERTISING STUDIO</p>
 
     <h1>
-        Advertising that makes<br>
-        <span>you stand out.</span>
+        Advertising that<br>
+        <span>makes you stand out.</span>
     </h1>
 
     <p class="hero-description">
-        We create distinctive visual advertisements and creative
-        campaigns that help brands capture attention and leave
-        a lasting impression.
+        Distinctive visuals. Thoughtful storytelling.
+        Creative advertisements designed to make brands
+        impossible to overlook.
     </p>
 
     <a href="advertisements.html" class="primary-link">
@@ -399,145 +520,167 @@ footer {
     </a>
 </section>
 
-<section class="content-section" id="services">
+<section class="section services" id="services">
+
     <div class="section-heading">
-        <p>WHAT WE CREATE</p>
+        <p class="overline">WHAT WE DO</p>
         <h2>OUR SERVICES</h2>
+        <div class="line"></div>
     </div>
 
     <div class="services-grid">
 
-        <article class="service">
-            <span class="service-number">01</span>
-            <h3>PRODUCT ADVERTISEMENTS</h3>
+        <article class="service-card">
+            <span class="service-number">01 / PRODUCT</span>
+            <h3>Product Advertisements</h3>
             <p>
-                Cinematic product visuals designed to present
-                products with clarity, style and impact.
+                Cinematic product visuals that highlight
+                the details, character and appeal of your product.
             </p>
         </article>
 
-        <article class="service">
-            <span class="service-number">02</span>
-            <h3>PROMOTIONAL VIDEOS</h3>
+        <article class="service-card">
+            <span class="service-number">02 / PROMOTION</span>
+            <h3>Promotional Videos</h3>
             <p>
-                Engaging promotional content created to introduce
-                brands, products and services.
+                Engaging promotional films created to introduce
+                products, services and brand campaigns.
             </p>
         </article>
 
-        <article class="service">
-            <span class="service-number">03</span>
-            <h3>BRAND COMMERCIALS</h3>
+        <article class="service-card">
+            <span class="service-number">03 / BRAND</span>
+            <h3>Brand Commercials</h3>
             <p>
-                Creative brand storytelling that communicates
-                identity, atmosphere and purpose.
+                Distinctive visual storytelling that communicates
+                your brand's identity and message.
             </p>
         </article>
 
-        <article class="service">
-            <span class="service-number">04</span>
-            <h3>SOCIAL MEDIA CREATIVES</h3>
+        <article class="service-card">
+            <span class="service-number">04 / DIGITAL</span>
+            <h3>Social Media Creatives</h3>
             <p>
-                Short-form visual content designed for modern
-                digital platforms and audiences.
+                Modern short-form advertising content
+                designed for digital platforms.
             </p>
         </article>
 
-        <!-- ADD NEW SERVICES BELOW THIS LINE -->
+        <!-- ADD FUTURE SERVICE CARDS ABOVE THIS LINE -->
 
     </div>
 </section>
 
-<section class="content-section portfolio">
+<section class="section portfolio">
     <div class="section-heading">
-        <p>SELECTED CREATIVE PROJECTS</p>
+        <p class="overline">A SELECTION OF OUR CREATIVE WORK</p>
         <h2>OUR ADVERTISEMENTS</h2>
+        <div class="line"></div>
     </div>
 
-    <p>
-        Explore our advertising concepts, visual experiments
-        and creative productions.
+    <p class="portfolio-description">
+        Explore our advertising concepts and creative productions.
+        Every project begins with an idea and is shaped through
+        visual storytelling.
     </p>
 
     <a href="advertisements.html" class="text-link">
-        VIEW THE PORTFOLIO
+        DISCOVER OUR PORTFOLIO
     </a>
 </section>
 
-<section class="content-section" id="about">
+<section class="section about" id="about">
     <div class="section-heading">
-        <p>WHO WE ARE</p>
+        <p class="overline">THE STUDIO</p>
         <h2>ABOUT VÉRION</h2>
+        <div class="line"></div>
     </div>
 
     <div class="about-content">
         <p>
             VÉRION STUDIO is an independent creative advertising
-            studio focused on visual storytelling, distinctive
-            concepts and purposeful brand communication.
+            studio focused on distinctive concepts, visual
+            storytelling and purposeful brand communication.
         </p>
 
         <p>
-            From product advertisements to promotional campaigns,
-            our aim is to create visuals that make brands
-            memorable.
+            We bring products and ideas to life through
+            carefully crafted advertisements that capture
+            attention and create a lasting impression.
         </p>
     </div>
 </section>
 
-<section class="content-section" id="process">
+<section class="section process" id="process">
     <div class="section-heading">
-        <p>FROM IDEA TO FINAL DELIVERY</p>
+        <p class="overline">HOW WE WORK</p>
         <h2>OUR PROCESS</h2>
+        <div class="line"></div>
     </div>
 
     <div class="process-grid">
 
-        <article class="process-item">
-            <span>01 / DISCOVER</span>
+        <article class="process-card">
+            <span class="step">01 / DISCOVER</span>
             <h3>Share Your Vision</h3>
-            <p>Tell us about your brand, product and advertising goals.</p>
+            <p>
+                Tell us about your brand, product
+                and creative goals.
+            </p>
         </article>
 
-        <article class="process-item">
-            <span>02 / PLAN</span>
+        <article class="process-card">
+            <span class="step">02 / PLAN</span>
             <h3>Plan & Confirm</h3>
-            <p>We discuss the creative direction, scope and project terms.</p>
+            <p>
+                We discuss the concept, scope,
+                pricing and project terms.
+            </p>
         </article>
 
-        <article class="process-item">
-            <span>03 / CREATE</span>
+        <article class="process-card">
+            <span class="step">03 / CREATE</span>
             <h3>Creative Production</h3>
-            <p>We develop the advertisement according to the agreed brief.</p>
+            <p>
+                Your advertisement is developed
+                according to the agreed brief.
+            </p>
         </article>
 
-        <article class="process-item">
-            <span>04 / DELIVER</span>
+        <article class="process-card">
+            <span class="step">04 / DELIVER</span>
             <h3>Final Delivery</h3>
-            <p>The approved final advertisement is delivered.</p>
+            <p>
+                The approved final advertisement
+                is delivered in the agreed format.
+            </p>
         </article>
 
     </div>
 </section>
 
-<section class="content-section contact" id="contact">
+<section class="section contact" id="contact">
+
     <div class="section-heading">
-        <p>LET'S CREATE SOMETHING DISTINCTIVE</p>
+        <p class="overline">LET'S WORK TOGETHER</p>
         <h2>START YOUR PROJECT</h2>
+        <div class="line"></div>
     </div>
 
-    <p>
+    <p class="contact-description">
         Have a product, brand or idea in mind?
-        Get in touch with VÉRION STUDIO to discuss your project.
+        Tell us about your project and let's create
+        something distinctive.
     </p>
 
     <div class="contact-options">
 
-        <!-- ADD WHATSAPP, INSTAGRAM AND EMAIL OPTIONS BELOW THIS LINE -->
+        <!-- ADD WHATSAPP, INSTAGRAM AND EMAIL LINKS BELOW THIS LINE -->
 
-        <!-- END OF FUTURE CONTACT OPTIONS -->
+        <!-- END FUTURE CONTACT LINKS -->
 
     </div>
+
 </section>
 
 </main>
@@ -545,23 +688,6 @@ footer {
 <footer>
     © 2026 VÉRION STUDIO. ALL RIGHTS RESERVED.
 </footer>
-
-<script>
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-menuToggle.addEventListener("click", function () {
-    const isOpen = navLinks.classList.toggle("active");
-    menuToggle.setAttribute("aria-expanded", isOpen);
-});
-
-navLinks.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", function () {
-        navLinks.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
-    });
-});
-</script>
 
 </body>
 </html>
