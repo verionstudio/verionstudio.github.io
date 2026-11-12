@@ -3,691 +3,953 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080808">
+<meta name="theme-color" content="#090909">
+<title>VÉRION STUDIO | Creative Intelligence</title>
+<meta name="description" content="VÉRION STUDIO — Creative production, intelligent content creation and brand growth.">
 
-<title>VÉRION STUDIO | Creative Advertising Agency</title>
-<meta name="description" content="VÉRION STUDIO creates cinematic advertisements, brand films and distinctive visual campaigns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --black: #080808;
-    --dark: #0d0d0c;
-    --gold: #cbb080;
-    --gold-light: #e5d1a7;
-    --white: #f3eee5;
-    --muted: #aaa49a;
-    --line: rgba(203,176,128,0.22);
+  --bg: #090909;
+  --surface: #111111;
+  --surface2: #171717;
+  --gold: #c8a878;
+  --gold-light: #e1c69b;
+  --white: #f5f2ec;
+  --muted: #a09a90;
+  --border: rgba(200,168,120,.22);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 
 body {
-    background: var(--black);
-    color: var(--white);
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.7;
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
 
-header {
-    width: 100%;
-    background: rgba(8,8,8,0.97);
-    border-bottom: 1px solid var(--line);
-}
+button { font: inherit; }
 
-.navbar {
-    min-height: 88px;
-    padding: 0 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 35px;
-}
-
-.logo {
-    color: var(--gold-light);
-    font-size: 21px;
-    letter-spacing: 5px;
-    white-space: nowrap;
-    font-weight: 400;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 29px;
-    white-space: nowrap;
-}
-
-.nav-links a {
-    color: #d4cec3;
-    font-size: 10px;
-    letter-spacing: 1.8px;
-    transition: color .3s;
-}
-
-.nav-links a:hover {
-    color: var(--gold-light);
-}
-
-.hero {
-    min-height: 690px;
-    padding: 120px 8%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    background:
-        radial-gradient(ellipse at 50% 45%, rgba(137,105,58,0.17), transparent 55%),
-        linear-gradient(180deg, #0b0b0a, #080808);
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 35px;
-    border: 1px solid rgba(203,176,128,0.08);
-    pointer-events: none;
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
 }
 
 .eyebrow {
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 6px;
-    margin-bottom: 30px;
+  color: var(--gold);
+  font-size: .72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 17px;
 }
 
-.hero h1 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-weight: 400;
-    font-size: clamp(42px, 6.5vw, 76px);
-    line-height: 1.18;
-    letter-spacing: 1px;
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
-.hero h1 span {
-    color: var(--gold-light);
-    font-style: italic;
-}
-
-.hero-description {
-    max-width: 590px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 2;
-    margin: 28px auto 38px;
-}
-
-.primary-link {
-    display: inline-block;
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-    padding: 14px 32px;
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    transition: .3s;
-}
-
-.primary-link:hover {
-    background: var(--gold);
-    color: var(--black);
+h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
 }
 
 .section {
-    padding: 110px 8%;
+  padding: 100px 0;
 }
 
-.section-heading {
-    text-align: center;
-    margin-bottom: 65px;
+.section-intro {
+  max-width: 620px;
+  color: var(--muted);
+  margin-top: 17px;
 }
 
-.section-heading .overline {
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 4px;
-    margin-bottom: 15px;
+.gold { color: var(--gold-light); }
+
+/* HEADER */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(9,9,9,.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
 }
 
-.section-heading h2 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(31px, 4vw, 45px);
-    font-weight: 400;
-    letter-spacing: 1px;
+.nav-wrap {
+  width: min(1200px, 94%);
+  margin: auto;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
 }
 
-.section-heading .line {
-    width: 48px;
-    height: 1px;
-    background: var(--gold);
-    margin: 24px auto 0;
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  color: var(--gold-light);
+  white-space: nowrap;
 }
 
-.services {
-    background: var(--black);
+nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
 }
+
+nav::-webkit-scrollbar { display: none; }
+
+nav a {
+  font-size: .72rem;
+  letter-spacing: 1px;
+  color: #c3beb5;
+  transition: .25s;
+}
+
+nav a:hover { color: var(--gold-light); }
+
+/* BUTTONS */
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 23px;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  font-size: .78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: .25s;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: #090909;
+}
+
+.btn-filled {
+  background: var(--gold);
+  color: #090909;
+}
+
+.btn-filled:hover {
+  background: var(--gold-light);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  right: -140px;
+  top: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,168,120,.12), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 780px;
+  padding: 100px 0;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: -2px;
+}
+
+.hero h1 span { color: var(--gold-light); }
+
+.hero-description {
+  max-width: 550px;
+  color: var(--muted);
+  margin: 25px 0 32px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-note {
+  margin-top: 65px;
+  color: #777169;
+  font-size: .68rem;
+  letter-spacing: 3px;
+}
+
+/* SERVICES */
 
 .services-grid {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 42px;
 }
 
 .service-card {
-    min-height: 210px;
-    padding: 38px 40px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    transition: background .3s;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 30px;
+  transition: .3s;
 }
 
 .service-card:hover {
-    background: #11100e;
+  border-color: var(--gold);
+  transform: translateY(-3px);
 }
 
-.service-number {
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 3px;
+.card-number {
+  color: var(--gold);
+  font-size: .75rem;
+  letter-spacing: 2px;
 }
 
 .service-card h3 {
-    color: var(--white);
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 22px;
-    font-weight: 400;
-    margin: 18px 0 12px;
+  font-size: 1.55rem;
+  margin: 23px 0 12px;
 }
 
 .service-card p {
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.9;
+  color: var(--muted);
+  font-size: .9rem;
 }
 
-.portfolio {
-    text-align: center;
-    background:
-        radial-gradient(ellipse at center, rgba(137,105,58,0.12), transparent 65%),
-        #0d0d0c;
-    border-top: 1px solid rgba(203,176,128,0.08);
-    border-bottom: 1px solid rgba(203,176,128,0.08);
+.service-card .card-link {
+  display: inline-block;
+  color: var(--gold-light);
+  font-size: .76rem;
+  letter-spacing: 1px;
+  margin-top: 24px;
 }
 
-.portfolio-description {
-    max-width: 580px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 2;
-    margin: -20px auto 34px;
+/* SCRIPT TO VIDEO */
+
+.production {
+  background: #11100e;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-.text-link {
-    display: inline-block;
-    color: var(--gold-light);
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--gold);
-    transition: .3s;
+.production-content {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 60px;
 }
 
-.text-link:hover {
-    color: white;
+.production-panel {
+  border: 1px solid var(--border);
+  padding: 35px;
+  background: #0c0c0c;
 }
 
-.about {
-    background: var(--black);
+.production-panel h3 {
+  color: var(--gold-light);
+  font-size: 1.7rem;
+  margin-bottom: 16px;
 }
 
-.about-content {
-    max-width: 790px;
-    margin: auto;
-    text-align: center;
+.production-panel p {
+  color: var(--muted);
+  font-size: .9rem;
 }
 
-.about-content p {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 2.1;
-    margin-bottom: 20px;
+.production-steps {
+  list-style: none;
+  margin-top: 24px;
 }
 
-.process {
-    background: #0d0d0c;
+.production-steps li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  color: #d0c9bf;
+  font-size: .85rem;
 }
+
+/* PORTFOLIO */
+
+.portfolio-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+  margin-top: 40px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.portfolio-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #151515;
+}
+
+.portfolio-card h3 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.portfolio-card p {
+  color: var(--muted);
+  font-size: .9rem;
+  margin-bottom: 22px;
+}
+
+/* MAKE YOUR OWN CONTENT */
+
+.content-section {
+  background: #10100f;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 42px;
+}
+
+.content-card {
+  background: #0b0b0b;
+  border: 1px solid var(--border);
+  padding: 27px;
+  min-height: 185px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: .25s;
+}
+
+.content-card:hover {
+  border-color: var(--gold);
+}
+
+.content-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.content-card p {
+  color: var(--muted);
+  font-size: .84rem;
+}
+
+.coming-soon {
+  display: inline-block;
+  color: var(--gold-light);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  font-size: .63rem;
+  letter-spacing: 2px;
+  width: fit-content;
+  margin-top: 22px;
+}
+
+.ai-main-card {
+  margin-top: 35px;
+  padding: 35px;
+  border: 1px solid var(--gold);
+  background: linear-gradient(130deg, #19150f, #0b0b0b 70%);
+}
+
+.ai-main-card h3 {
+  color: var(--gold-light);
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.ai-main-card p {
+  color: var(--muted);
+  max-width: 650px;
+}
+
+.ai-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.ai-input input {
+  width: 100%;
+  background: #171717;
+  border: 1px solid var(--border);
+  padding: 15px;
+  color: white;
+  outline: none;
+  font-family: inherit;
+}
+
+.ai-input input::placeholder { color: #777; }
+
+.ai-input button { opacity: .55; cursor: not-allowed; }
+
+.input-note {
+  font-size: .7rem;
+  color: #817b72;
+  margin-top: 12px;
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.about-grid p {
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+/* PROCESS */
 
 .process-grid {
-    max-width: 1150px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 40px;
 }
 
 .process-card {
-    border-top: 1px solid var(--gold);
-    padding-top: 24px;
+  padding: 25px 20px;
+  background: var(--surface);
+  border-top: 1px solid var(--gold);
 }
 
-.process-card .step {
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 2px;
+.process-card .number {
+  color: var(--gold);
+  font-size: .75rem;
+  letter-spacing: 2px;
 }
 
 .process-card h3 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 19px;
-    font-weight: 400;
-    margin: 17px 0 12px;
+  font-size: 1.2rem;
+  margin: 20px 0 10px;
 }
 
 .process-card p {
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.9;
+  color: var(--muted);
+  font-size: .82rem;
 }
 
-.contact {
-    text-align: center;
-    background:
-        radial-gradient(ellipse at center, rgba(137,105,58,0.12), transparent 65%),
-        var(--black);
+/* CONTACT */
+
+.contact-section {
+  text-align: center;
+  background: #11100e;
+  border-top: 1px solid var(--border);
 }
 
-.contact-description {
-    color: var(--muted);
-    font-size: 13px;
-    max-width: 550px;
-    margin: -25px auto 35px;
-    line-height: 2;
+.contact-section .section-intro {
+  margin: 17px auto 30px;
 }
 
-/* FUTURE CONTACT OPTIONS: ADD NEW CONTACT LINKS BELOW */
-
-.contact-options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+.contact-placeholder {
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid var(--border);
+  padding: 25px;
+  color: var(--muted);
+  font-size: .85rem;
 }
 
-.contact-link {
-    display: inline-block;
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-    padding: 12px 25px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    transition: .3s;
-}
-
-.contact-link:hover {
-    background: var(--gold);
-    color: var(--black);
-}
-
-/* END CONTACT OPTIONS */
+/* FOOTER */
 
 footer {
-    border-top: 1px solid var(--line);
-    padding: 27px 6%;
-    text-align: center;
-    color: #77716a;
-    font-size: 9px;
-    letter-spacing: 2.5px;
+  padding: 30px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: #817b72;
+  font-size: .72rem;
+  letter-spacing: 1px;
 }
 
-/* KEEP THE SAME HORIZONTAL DESIGN ON SMALL SCREENS */
+footer span { color: var(--gold); }
 
-@media (max-width: 950px) {
-    .navbar {
-        padding: 0 4%;
-        gap: 20px;
-    }
+/* FUTURE FEATURES RESERVED
+   USER ACCOUNTS — FUTURE
+   SUBSCRIPTION SYSTEM — FUTURE
+   VÉRION.AI PLUS — FUTURE
+   VÉRION.AI PRO — FUTURE
+   PAYMENT INTEGRATION — FUTURE
+   PREMIUM FEATURES — FUTURE
+*/
 
-    .logo {
-        font-size: 17px;
-        letter-spacing: 3px;
-    }
+@media (max-width: 760px) {
+  .nav-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 0 12px;
+    gap: 12px;
+  }
 
-    .nav-links {
-        gap: 15px;
-    }
+  nav {
+    width: 100%;
+    gap: 21px;
+    padding-bottom: 4px;
+  }
 
-    .nav-links a {
-        font-size: 9px;
-        letter-spacing: 1px;
-    }
+  nav a { font-size: .67rem; }
 
-    .section {
-        padding: 85px 5%;
-    }
+  .hero { min-height: 560px; }
 
-    .service-card {
-        padding: 28px 24px;
-    }
+  .hero h1 { font-size: 3.3rem; }
 
-    .process-grid {
-        gap: 16px;
-    }
+  .section { padding: 75px 0; }
+
+  .services-grid,
+  .content-grid,
+  .production-content,
+  .portfolio-card,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .portfolio-card { padding: 17px; }
+
+  .ai-main-card { padding: 24px; }
+
+  .ai-input { flex-direction: column; }
+
+  .ai-input button { width: 100%; }
 }
 
-@media (max-width: 600px) {
-    .navbar {
-        min-height: 75px;
-        padding: 0 16px;
-        flex-direction: column;
-        justify-content: center;
-        gap: 9px;
-        overflow: hidden;
-    }
+@media (max-width: 420px) {
+  .hero h1 { font-size: 2.8rem; }
 
-    .logo {
-        font-size: 17px;
-        letter-spacing: 4px;
-    }
+  .process-grid { grid-template-columns: 1fr; }
 
-    .nav-links {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 21px;
-        overflow-x: auto;
-        scrollbar-width: none;
-        padding: 3px 0 8px;
-    }
-
-    .nav-links::-webkit-scrollbar {
-        display: none;
-    }
-
-    .nav-links a {
-        font-size: 9px;
-        flex-shrink: 0;
-    }
-
-    .hero {
-        min-height: 590px;
-        padding: 90px 8%;
-    }
-
-    .hero::before {
-        inset: 15px;
-    }
-
-    .hero h1 {
-        font-size: 43px;
-    }
-
-    .hero-description {
-        font-size: 12px;
-    }
-
-    .section {
-        padding: 75px 6%;
-    }
-
-    .section-heading {
-        margin-bottom: 45px;
-    }
-
-    .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .service-card {
-        min-height: 205px;
-        padding: 20px 14px;
-    }
-
-    .service-card h3 {
-        font-size: 17px;
-    }
-
-    .service-card p {
-        font-size: 10px;
-    }
-
-    .process-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 30px 18px;
-    }
-
-    .process-card h3 {
-        font-size: 17px;
-    }
-
-    .process-card p {
-        font-size: 10px;
-    }
+  .service-card { padding: 24px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-    <nav class="navbar">
-        <a href="index.html" class="logo">VÉRION STUDIO</a>
+  <div class="nav-wrap">
+    <a class="logo" href="#home">VÉRION STUDIO</a>
 
-        <div class="nav-links">
-            <a href="#home">HOME</a>
-            <a href="#services">SERVICES</a>
-            <a href="advertisements.html">OUR ADVERTISEMENTS</a>
-            <a href="#about">ABOUT</a>
-            <a href="#process">PROCESS</a>
-            <a href="#contact">CONTACT</a>
-        </div>
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#services">SERVICES</a>
+      <a href="advertisements.html">OUR ADVERTISEMENTS</a>
+      <a href="#verion-ai">VÉRION.AI</a>
+      <a href="#about">ABOUT</a>
+      <a href="#process">PROCESS</a>
+      <a href="#contact">CONTACT</a>
     </nav>
+  </div>
 </header>
 
+<!-- HOME -->
 <main>
 
 <section class="hero" id="home">
-    <p class="eyebrow">INDEPENDENT CREATIVE ADVERTISING STUDIO</p>
+  <div class="container">
+    <div class="hero-content">
+      <p class="eyebrow">CREATIVE STUDIO · INTELLIGENT CONTENT</p>
 
-    <h1>
-        Advertising that<br>
-        <span>makes you stand out.</span>
-    </h1>
+      <h1>
+        Ideas deserve<br>
+        <span>exceptional</span><br>
+        execution.
+      </h1>
 
-    <p class="hero-description">
-        Distinctive visuals. Thoughtful storytelling.
-        Creative advertisements designed to make brands
-        impossible to overlook.
-    </p>
+      <p class="hero-description">
+        We bring ideas to life through creative advertising,
+        intelligent content creation and strategic brand storytelling.
+      </p>
 
-    <a href="advertisements.html" class="primary-link">
-        EXPLORE OUR ADVERTISEMENTS
-    </a>
+      <div class="hero-actions">
+        <a class="btn btn-filled" href="#services">Explore Services</a>
+        <a class="btn" href="#verion-ai">Discover VÉRION.AI</a>
+      </div>
+
+      <p class="hero-note">THINK DIFFERENTLY. CREATE DISTINCTIVELY.</p>
+    </div>
+  </div>
 </section>
 
-<section class="section services" id="services">
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <p class="eyebrow">WHAT WE DO</p>
+    <h2>Creative services,<br><span class="gold">without compromise.</span></h2>
 
-    <div class="section-heading">
-        <p class="overline">WHAT WE DO</p>
-        <h2>OUR SERVICES</h2>
-        <div class="line"></div>
-    </div>
+    <p class="section-intro">
+      From product storytelling to promotional content,
+      we help turn ideas into memorable visual experiences.
+    </p>
 
     <div class="services-grid">
 
-        <article class="service-card">
-            <span class="service-number">01 / PRODUCT</span>
-            <h3>Product Advertisements</h3>
-            <p>
-                Cinematic product visuals that highlight
-                the details, character and appeal of your product.
-            </p>
-        </article>
+      <article class="service-card">
+        <span class="card-number">01 / ADVERTISING</span>
+        <h3>Product Advertisements</h3>
+        <p>
+          Cinematic product-focused advertisements designed
+          to present products with style and impact.
+        </p>
+      </article>
 
-        <article class="service-card">
-            <span class="service-number">02 / PROMOTION</span>
-            <h3>Promotional Videos</h3>
-            <p>
-                Engaging promotional films created to introduce
-                products, services and brand campaigns.
-            </p>
-        </article>
+      <article class="service-card">
+        <span class="card-number">02 / PROMOTION</span>
+        <h3>Promotional Videos</h3>
+        <p>
+          Engaging promotional videos for businesses,
+          brands, launches and campaigns.
+        </p>
+      </article>
 
-        <article class="service-card">
-            <span class="service-number">03 / BRAND</span>
-            <h3>Brand Commercials</h3>
-            <p>
-                Distinctive visual storytelling that communicates
-                your brand's identity and message.
-            </p>
-        </article>
+      <article class="service-card">
+        <span class="card-number">03 / BRANDING</span>
+        <h3>Brand Commercials</h3>
+        <p>
+          Visual storytelling that communicates a brand's
+          identity, personality and message.
+        </p>
+      </article>
 
-        <article class="service-card">
-            <span class="service-number">04 / DIGITAL</span>
-            <h3>Social Media Creatives</h3>
-            <p>
-                Modern short-form advertising content
-                designed for digital platforms.
-            </p>
-        </article>
+      <article class="service-card">
+        <span class="card-number">04 / SOCIAL MEDIA</span>
+        <h3>Social Media Creatives</h3>
+        <p>
+          Creative video content designed for modern
+          digital platforms and audiences.
+        </p>
+      </article>
 
-        <!-- ADD FUTURE SERVICE CARDS ABOVE THIS LINE -->
+      <!-- ADD FUTURE SERVICE CARDS ABOVE THIS LINE -->
 
     </div>
+  </div>
 </section>
 
-<section class="section portfolio">
-    <div class="section-heading">
-        <p class="overline">A SELECTION OF OUR CREATIVE WORK</p>
-        <h2>OUR ADVERTISEMENTS</h2>
-        <div class="line"></div>
+<!-- SCRIPT TO VIDEO -->
+<section class="section production" id="script-to-video">
+  <div class="container production-content">
+
+    <div>
+      <p class="eyebrow">OUR PRODUCTION SERVICE</p>
+      <h2>From script<br>to <span class="gold">screen.</span></h2>
+
+      <p class="section-intro">
+        Have an idea or an existing script?
+        Let our studio transform it into a finished video.
+      </p>
+
+      <a class="btn btn-filled" href="#contact" style="margin-top:28px;">
+        Request a Video
+      </a>
     </div>
 
-    <p class="portfolio-description">
-        Explore our advertising concepts and creative productions.
-        Every project begins with an idea and is shaped through
-        visual storytelling.
+    <div class="production-panel">
+      <h3>Script-to-Video</h3>
+      <p>
+        Share your script and creative requirements.
+        We'll discuss the project, production approach
+        and quotation before beginning.
+      </p>
+
+      <ul class="production-steps">
+        <li>01 — Submit your script</li>
+        <li>02 — Discuss the requirements</li>
+        <li>03 — Receive your quotation</li>
+        <li>04 — Production and revisions</li>
+        <li>05 — Final video delivery</li>
+      </ul>
+
+      <p style="margin-top:20px;color:var(--gold-light);">
+        Paid studio service
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADVERTISEMENTS -->
+<section class="section" id="advertisements">
+  <div class="container">
+    <p class="eyebrow">SELECTED WORK</p>
+    <h2>Our <span class="gold">advertisements.</span></h2>
+
+    <p class="section-intro">
+      Explore visual concepts and advertising projects
+      created by VÉRION STUDIO.
     </p>
 
-    <a href="advertisements.html" class="text-link">
-        DISCOVER OUR PORTFOLIO
-    </a>
+    <div class="portfolio-card">
+      <img
+        class="portfolio-image"
+        src="https://img.youtube.com/vi/B4neyYsIuYE/maxresdefault.jpg"
+        alt="NOIRÉ perfume concept advertisement thumbnail"
+        loading="lazy"
+      >
+
+      <div>
+        <p class="eyebrow">CONCEPT ADVERTISEMENT</p>
+        <h3>NOIRÉ</h3>
+        <p>
+          Not every presence needs an introduction.
+          A cinematic luxury perfume advertising concept.
+        </p>
+
+        <a class="btn btn-filled"
+           href="advertisements.html">
+          Explore Advertisements
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section about" id="about">
-    <div class="section-heading">
-        <p class="overline">THE STUDIO</p>
-        <h2>ABOUT VÉRION</h2>
-        <div class="line"></div>
+<!-- MAKE YOUR OWN CONTENT -->
+<section class="section content-section" id="make-content">
+  <div class="container">
+
+    <p class="eyebrow">YOUR IDEAS. YOUR CREATION.</p>
+    <h2>Make your own <span class="gold">content.</span></h2>
+
+    <p class="section-intro">
+      Create scripts, develop ideas, write captions
+      and plan your content with the future VÉRION.AI experience.
+    </p>
+
+    <div class="content-grid">
+
+      <article class="content-card">
+        <div>
+          <h3>Script Generator</h3>
+          <p>
+            Turn your topic, product or idea into
+            a structured, engaging script.
+          </p>
+        </div>
+        <span class="coming-soon">COMING SOON</span>
+      </article>
+
+      <article class="content-card">
+        <div>
+          <h3>Caption Generator</h3>
+          <p>
+            Create captions for Instagram,
+            YouTube and other platforms.
+          </p>
+        </div>
+        <span class="coming-soon">COMING SOON</span>
+      </article>
+
+      <article class="content-card">
+        <div>
+          <h3>Content Ideas</h3>
+          <p>
+            Discover fresh ideas, hooks
+            and concepts for your next post.
+          </p>
+        </div>
+        <span class="coming-soon">COMING SOON</span>
+      </article>
+
+      <article class="content-card">
+        <div>
+          <h3>Growth Roadmaps</h3>
+          <p>
+            Get step-by-step strategies
+            for growing your digital presence.
+          </p>
+        </div>
+        <span class="coming-soon">COMING SOON</span>
+      </article>
+
+      <!-- ADD FUTURE CONTENT GENERATORS ABOVE THIS LINE -->
+
     </div>
 
-    <div class="about-content">
+    <!-- VÉRION.AI CONTENT GENERATOR CHAT RESERVED -->
+    <div class="ai-main-card">
+      <p class="eyebrow">YOUR CREATIVE ASSISTANT</p>
+      <h3>VÉRION.AI</h3>
+
+      <p>
+        Your creative companion for content,
+        storytelling, marketing and ideas.
+        Tell us what you're working on.
+      </p>
+
+      <div class="ai-input">
+        <input
+          type="text"
+          placeholder="Describe what you want to create..."
+          disabled
+          aria-label="VÉRION AI message input"
+        >
+
+        <button class="btn btn-filled" disabled>
+          Send
+        </button>
+      </div>
+
+      <p class="input-note">
+        VÉRION.AI is currently in development. AI generation
+        will be available here soon.
+      </p>
+
+      <!-- FUTURE: CONNECT THIS INPUT TO THE VÉRION.AI BACKEND -->
+      <!-- FUTURE: SCRIPT GENERATOR AUTO-PROMPT -->
+      <!-- FUTURE: CAPTION GENERATOR AUTO-PROMPT -->
+      <!-- FUTURE: CONTENT IDEAS AUTO-PROMPT -->
+      <!-- FUTURE: GROWTH ROADMAP AUTO-PROMPT -->
+
+    </div>
+  </div>
+</section>
+
+<!-- VÉRION.AI GENERAL CHAT -->
+<section class="section" id="verion-ai">
+  <div class="container">
+
+    <p class="eyebrow">INTELLIGENCE MEETS CREATIVITY</p>
+    <h2>Meet <span class="gold">VÉRION.AI.</span></h2>
+
+    <p class="section-intro">
+      More than a content generator.
+      A conversational AI experience for questions,
+      ideas, creative thinking and everyday assistance.
+    </p>
+
+    <div class="ai-main-card">
+      <h3>What would you like to explore?</h3>
+
+      <p>
+        Ask questions, discuss ideas, get explanations
+        or work on your next creative project.
+      </p>
+
+      <div class="ai-input">
+        <input
+          type="text"
+          placeholder="Ask VÉRION.AI anything..."
+          disabled
+          aria-label="VÉRION AI general chat input"
+        >
+
+        <button class="btn btn-filled" disabled>
+          Send
+        </button>
+      </div>
+
+      <p class="input-note">
+        GENERAL AI ASSISTANT · COMING SOON
+      </p>
+
+      <!-- FUTURE: GENERAL VÉRION.AI CHAT CONNECTION -->
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <p class="eyebrow">ABOUT VÉRION</p>
+    <h2>Built around <span class="gold">possibility.</span></h2>
+
+    <div class="about-grid">
+      <div>
         <p>
-            VÉRION STUDIO is an independent creative advertising
-            studio focused on distinctive concepts, visual
-            storytelling and purposeful brand communication.
+          VÉRION STUDIO is a creative platform focused on
+          advertising, digital content and intelligent
+          creative tools.
         </p>
 
         <p>
-            We bring products and ideas to life through
-            carefully crafted advertisements that capture
-            attention and create a lasting impression.
+          Our aim is to make creative production and
+          content development more accessible,
+          thoughtful and effective.
         </p>
+      </div>
+
+      <div>
+        <p>
+          Whether you're building a brand, starting a
+          content channel or developing an idea,
+          VÉRION is designed to help you move forward.
+        </p>
+
+        <p class="gold">
+          Think clearly. Create boldly. Grow intentionally.
+        </p>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="section process" id="process">
-    <div class="section-heading">
-        <p class="overline">HOW WE WORK</p>
-        <h2>OUR PROCESS</h2>
-        <div class="line"></div>
-    </div>
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="container">
+    <p class="eyebrow">HOW IT WORKS</p>
+    <h2>A clear path from <span class="gold">idea to execution.</span></h2>
 
     <div class="process-grid">
 
-        <article class="process-card">
-            <span class="step">01 / DISCOVER</span>
-            <h3>Share Your Vision</h3>
-            <p>
-                Tell us about your brand, product
-                and creative goals.
-            </p>
-        </article>
+      <article class="process-card">
+        <span class="number">01</span>
+        <h3>Discover</h3>
+        <p>Explore our studio, services and creative tools.</p>
+      </article>
 
-        <article class="process-card">
-            <span class="step">02 / PLAN</span>
-            <h3>Plan & Confirm</h3>
-            <p>
-                We discuss the concept, scope,
-                pricing and project terms.
-            </p>
-        </article>
+      <article class="process-card">
+        <span class="number">02</span>
+        <h3>Create</h3>
+        <p>Develop ideas, scripts and creative directions.</p>
+      </article>
 
-        <article class="process-card">
-            <span class="step">03 / CREATE</span>
-            <h3>Creative Production</h3>
-            <p>
-                Your advertisement is developed
-                according to the agreed brief.
-            </p>
-        </article>
+      <article class="process-card">
+        <span class="number">03</span>
+        <h3>Collaborate</h3>
+        <p>Share your requirements for professional video production.</p>
+      </article>
 
-        <article class="process-card">
-            <span class="step">04 / DELIVER</span>
-            <h3>Final Delivery</h3>
-            <p>
-                The approved final advertisement
-                is delivered in the agreed format.
-            </p>
-        </article>
-
-    </div>
-</section>
-
-<section class="section contact" id="contact">
-
-    <div class="section-heading">
-        <p class="overline">LET'S WORK TOGETHER</p>
-        <h2>START YOUR PROJECT</h2>
-        <div class="line"></div>
-    </div>
-
-    <p class="contact-description">
-        Have a product, brand or idea in mind?
-        Tell us about your project and let's create
-        something distinctive.
-    </p>
-
-    <div class="contact-options">
-
-        <!-- ADD WHATSAPP, INSTAGRAM AND EMAIL LINKS BELOW THIS LINE -->
-
-        <!-- END FUTURE CONTACT LINKS -->
-
-    </div>
-
-</section>
-
-</main>
-
-<footer>
-    © 2026 VÉRION STUDIO. ALL RIGHTS RESERVED.
-</footer>
-
-</body>
-</html>
+      <article class="process-card">
+        <span class="number">04</span>
+        <h3>Deliver</h3>
+        
