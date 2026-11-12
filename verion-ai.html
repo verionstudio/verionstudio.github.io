@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VÉRION.AI | VÉRION STUDIO</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #080808;
+    color: #eee9df;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+header {
+    padding: 24px 6%;
+    border-bottom: 1px solid #29251f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #d8bd88;
+    font-size: 21px;
+    letter-spacing: 4px;
+}
+
+nav a {
+    color: #d8bd88;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+main {
+    max-width: 850px;
+    margin: 65px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.tag {
+    color: #bda477;
+    letter-spacing: 4px;
+    font-size: 11px;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 65px);
+    font-weight: 400;
+    margin: 20px 0;
+}
+
+h1 span {
+    color: #d8bd88;
+}
+
+.intro {
+    color: #999;
+    line-height: 1.8;
+    font-size: 14px;
+    max-width: 550px;
+    margin: auto;
+}
+
+.chat {
+    margin-top: 55px;
+    border: 1px solid #393127;
+    background: #10100f;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: left;
+}
+
+.welcome {
+    color: #d8bd88;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.message {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.shortcuts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.shortcut {
+    background: #111;
+    border: 1px solid #393127;
+    color: #e5d8bf;
+    padding: 17px 10px;
+    border-radius: 7px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.input-area {
+    margin-top: 35px;
+    display: flex;
+    gap: 10px;
+    border: 1px solid #51432e;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+}
+
+button {
+    background: #d8bd88;
+    border: none;
+    padding: 0 20px;
+    color: #111;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.note {
+    color: #68635b;
+    font-size: 11px;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 35px 15px;
+    color: #68635b;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+@media(max-width: 500px) {
+    header {
+        padding: 20px;
+    }
+
+    .shortcuts {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        margin-top: 45px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">VÉRION</div>
+    <nav>
+        <a href="index.html">HOME</a>
+    </nav>
+</header>
+
+<main>
+
+    <div class="tag">INTRODUCING</div>
+
+    <h1>VÉRION<span>.AI</span></h1>
+
+    <p class="intro">
+        Your creative intelligence.
+        From ideas to storytelling, scripts to strategy,
+        bring your next creation to life.
+    </p>
+
+    <section class="chat">
+
+        <div class="welcome">Welcome to VÉRION.AI.</div>
+
+        <p class="message">
+            What are we creating today?
+            Tell us your idea, ask a question, or choose a starting point below.
+        </p>
+
+        <div class="shortcuts">
+            <div class="shortcut">Script Generator</div>
+            <div class="shortcut">Caption Generator</div>
+            <div class="shortcut">Content Ideas</div>
+            <div class="shortcut">Growth Roadmaps</div>
+        </div>
+
+        <div class="input-area">
+            <input type="text"
+            placeholder="Tell us what you have in mind..."
+            disabled>
+            <button disabled>Send</button>
+        </div>
+
+        <p class="note">
+            VÉRION.AI · COMING SOON
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+    VÉRION STUDIO · IDEAS DESERVE EXCEPTIONAL EXECUTION.
+</footer>
+
+</body>
+</html>
