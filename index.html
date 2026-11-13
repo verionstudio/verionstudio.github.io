@@ -3,61 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VÉRION STUDIO | Creative Agency & VÉRION.AI</title>
+<title>VÉRION.AI | VÉRION STUDIO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --bg: #090909;
-    --bg-card: #111111;
-    --gold: #c8a878;
-    --gold-light: #e1c69b;
-    --text: #f5f2ec;
-    --text-muted: #c3beb5;
-    --border: rgba(200, 168, 120, 0.22);
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
 }
 
 body {
-    background: var(--bg);
-    color: var(--text);
+    background: #090909;
+    color: #f5f2ec;
     font-family: 'DM Sans', sans-serif;
-    line-height: 1.6;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-/* HEADER */
 header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    flex-shrink: 0;
     background: rgba(9, 9, 9, 0.94);
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(200, 168, 120, 0.22);
 }
 
 .nav-wrap {
     width: min(1200px, 94%);
     margin: auto;
-    min-height: 76px;
+    min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 22px;
+    gap: 15px;
+    padding: 12px 0;
 }
 
 .logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     letter-spacing: 2px;
-    color: var(--gold-light);
+    color: #e1c69b;
     text-decoration: none;
     white-space: nowrap;
 }
@@ -65,223 +56,175 @@ header {
 nav {
     display: flex;
     align-items: center;
-    gap: 24px;
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-
-nav::-webkit-scrollbar {
-    display: none;
 }
 
 nav a {
-    font-size: .72rem;
+    font-size: .7rem;
     letter-spacing: 1px;
-    color: var(--text-muted);
+    color: #a99b83;
     text-decoration: none;
-    text-transform: uppercase;
+    transition: 0.25s;
     white-space: nowrap;
-    transition: .25s;
 }
 
 nav a:hover {
-    color: var(--gold-light);
+    color: #e1c69b;
 }
 
-/* HERO SECTION */
-.hero {
-    width: min(1200px, 94%);
-    margin: auto;
-    padding: 110px 0 90px;
-    border-bottom: 1px solid var(--border);
-}
-
-.hero-tag {
-    font-size: .72rem;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 18px;
-}
-
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.6rem, 6vw, 4.6rem);
-    font-weight: 400;
-    line-height: 1.12;
-    max-width: 780px;
-    margin-bottom: 24px;
-}
-
-.hero h1 span {
-    color: var(--gold-light);
-}
-
-.hero p {
-    color: var(--text-muted);
-    max-width: 540px;
-    font-size: .98rem;
-    margin-bottom: 38px;
-}
-
-/* BUTTONS */
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-.btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 14px 28px;
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-    font-size: .75rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: .25s;
-    cursor: pointer;
-    background: transparent;
-    text-align: center;
-}
-
-.btn:hover {
-    background: var(--gold);
-    color: #090909;
-}
-
-.btn-filled {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: #090909;
-}
-
-.btn-filled:hover {
-    background: transparent;
-    color: var(--gold-light);
-}
-
-.tagline-strip {
-    margin-top: 64px;
-    font-size: .68rem;
-    letter-spacing: 3px;
-    color: #777;
-    text-transform: uppercase;
-}
-
-/* SECTIONS */
-section {
-    width: min(1200px, 94%);
-    margin: auto;
-    padding: 90px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.sec-tag {
-    font-size: .7rem;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.sec-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 48px;
-}
-
-.sec-title span {
-    color: var(--gold-light);
-}
-
-/* GRID & CARDS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-}
-
-.card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 36px 30px;
+/* Fullscreen Chat Layout */
+.chat-main {
+    flex: 1;
+    min-height: 0;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+}
+
+.chat-header-bar {
+    flex-shrink: 0;
+    padding: 14px 20px;
+    display: flex;
     justify-content: space-between;
-    text-decoration: none;
-    color: inherit;
-    transition: .3s ease;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(200, 168, 120, 0.15);
+    background: #090909;
 }
 
-.card:hover {
-    border-color: var(--gold-light);
-    transform: translateY(-4px);
-}
-
-.card-num {
-    font-size: .72rem;
-    letter-spacing: 2px;
-    color: var(--gold);
-    margin-bottom: 18px;
-}
-
-.card h3 {
+.chat-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 12px;
+    font-size: .95rem;
+    color: #e1c69b;
+    letter-spacing: .5px;
 }
 
-.card p {
-    font-size: .88rem;
-    color: var(--text-muted);
-    margin-bottom: 24px;
-}
-
-.card-link {
-    font-size: .7rem;
-    letter-spacing: 1.5px;
-    color: var(--gold-light);
+.mode-badge {
+    flex-shrink: 0;
+    font-size: .58rem;
+    letter-spacing: 1.2px;
+    background: rgba(200, 168, 120, 0.12);
+    color: #e1c69b;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(200, 168, 120, 0.3);
     text-transform: uppercase;
 }
 
-/* FOOTER */
-footer {
-    width: min(1200px, 94%);
-    margin: auto;
-    padding: 50px 0;
+.message-log {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 20px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    font-size: .75rem;
-    color: #777;
+    flex-direction: column;
+    gap: 16px;
+    scroll-behavior: smooth;
 }
 
-@media (max-width: 760px) {
+.message-log::-webkit-scrollbar {
+    width: 5px;
+}
+.message-log::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 3px;
+}
+
+.chat-bubble {
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: .9rem;
+    line-height: 1.6;
+    max-width: 85%;
+    white-space: pre-wrap;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-bubble.ai {
+    background: #111111;
+    border: 1px solid rgba(200, 168, 120, 0.18);
+    color: #f5f2ec;
+    align-self: flex-start;
+}
+
+.chat-bubble.user {
+    background: #c8a878;
+    color: #090909;
+    align-self: flex-end;
+    font-weight: 500;
+}
+
+.input-container {
+    flex-shrink: 0;
+    padding: 14px 20px;
+    background: #090909;
+    border-top: 1px solid rgba(200, 168, 120, 0.22);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    background: #111111;
+    border: 1px solid rgba(200, 168, 120, 0.25);
+    border-radius: 10px;
+    outline: none;
+    color: #f5f2ec;
+    padding: 13px 15px;
+    font-size: .9rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: 0.25s;
+}
+
+input:focus {
+    border-color: #c8a878;
+}
+
+button {
+    flex-shrink: 0;
+    background: #c8a878;
+    border: none;
+    padding: 0 24px;
+    height: 46px;
+    color: #090909;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: .75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.25s;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: #e1c69b;
+}
+
+button:disabled, input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
     .nav-wrap {
         flex-direction: column;
         align-items: flex-start;
-        padding: 16px 0 12px;
-        gap: 14px;
+        gap: 6px;
+        min-height: 65px;
+        padding: 10px 0;
     }
     nav {
         width: 100%;
-        gap: 18px;
-    }
-    .hero {
-        padding: 70px 0 60px;
-    }
-    .btn, .btn-filled {
-        width: 100%;
-        max-width: 280px;
+        display: flex;
+        justify-content: flex-end;
     }
 }
 </style>
@@ -293,111 +236,113 @@ footer {
     <div class="nav-wrap">
         <a href="index.html" class="logo">VÉRION STUDIO</a>
         <nav>
-            <a href="index.html">HOME</a>
-            <a href="verion-ai.html">VÉRION.AI</a>
-            <a href="advertisements.html">OUR ADVERTISEMENTS</a>
-            <a href="#services">SERVICES</a>
-            <a href="#make-content">MAKE YOUR OWN CONTENT</a>
+            <a href="index.html">← BACK TO HOME</a>
         </nav>
     </div>
 </header>
-
-<main>
-    <div class="hero">
-        <div class="hero-tag">CREATIVE STUDIO · INTELLIGENT CONTENT</div>
-        <h1>Ideas deserve <span>exceptional execution.</span></h1>
-        <p>We bring ideas to life through creative advertising, intelligent content creation and strategic brand storytelling.</p>
-        
-        <div class="hero-actions">
-            <a class="btn btn-filled" href="#services">Explore Services</a>
-            <a class="btn" href="verion-ai.html">Discover VÉRION.AI</a>
-        </div>
-
-        <div class="tagline-strip">THINK DIFFERENTLY. CREATE DISTINCTIVELY.</div>
+    
+<main class="chat-main">
+    <div class="chat-header-bar">
+        <span class="chat-title">VÉRION.AI Intelligence</span>
+        <span class="mode-badge" id="modeBadge">GENERAL</span>
     </div>
 
-    <section id="services">
-        <div class="sec-tag">WHAT WE DO</div>
-        <h2 class="sec-title">Creative services, <span>without compromise.</span></h2>
+    <div class="message-log" id="messageLog">
+        <div class="chat-bubble ai">Welcome to VÉRION.AI. How can I assist your creative vision today?</div>
+    </div>
 
-        <div class="grid">
-            <a href="advertisements.html" class="card">
-                <div>
-                    <div class="card-num">01</div>
-                    <h3>Advertisements</h3>
-                    <p>High-impact visual campaigns engineered to capture attention and elevate brand perception.</p>
-                </div>
-                <span class="card-link">EXPLORE WORK →</span>
-            </a>
-
-            <a href="social-media.html" class="card">
-                <div>
-                    <div class="card-num">02</div>
-                    <h3>Social Media Content</h3>
-                    <p>Scroll-stopping short-form reels and visual assets tailored for modern digital platforms.</p>
-                </div>
-                <span class="card-link">EXPLORE WORK →</span>
-            </a>
-
-            <a href="brand-commercials.html" class="card">
-                <div>
-                    <div class="card-num">03</div>
-                    <h3>Brand Commercials</h3>
-                    <p>Distinctive visual storytelling that brings a brand's identity, personality and message to life.</p>
-                </div>
-                <span class="card-link">EXPLORE WORK →</span>
-            </a>
-        </div>
-    </section>
-
-    <section id="make-content">
-        <div class="sec-tag">POWERED BY VÉRION.AI</div>
-        <h2 class="sec-title">Make your <span>own content.</span></h2>
-
-        <div class="grid">
-            <a href="verion-ai.html?mode=script" class="card">
-                <div>
-                    <div class="card-num">AI TOOL / 01</div>
-                    <h3>Script Generator</h3>
-                    <p>Generate cinematic video ad scripts with clear visual directions, pacing, and hooks.</p>
-                </div>
-                <span class="card-link">LAUNCH GENERATOR →</span>
-            </a>
-
-            <a href="verion-ai.html?mode=caption" class="card">
-                <div>
-                    <div class="card-num">AI TOOL / 02</div>
-                    <h3>Caption Generator</h3>
-                    <p>Craft luxury-toned social media copy and strategic hashtag sets in seconds.</p>
-                </div>
-                <span class="card-link">LAUNCH GENERATOR →</span>
-            </a>
-
-            <a href="verion-ai.html?mode=ideas" class="card">
-                <div>
-                    <div class="card-num">AI TOOL / 03</div>
-                    <h3>Content Ideas</h3>
-                    <p>Unlock viral-ready creative concepts and angles tailored specifically to your niche.</p>
-                </div>
-                <span class="card-link">LAUNCH GENERATOR →</span>
-            </a>
-
-            <a href="verion-ai.html?mode=roadmap" class="card">
-                <div>
-                    <div class="card-num">AI TOOL / 04</div>
-                    <h3>Growth Roadmaps</h3>
-                    <p>Build actionable 30-day execution plans to scale your audience and brand authority.</p>
-                </div>
-                <span class="card-link">LAUNCH GENERATOR →</span>
-            </a>
-        </div>
-    </section>
+    <div class="input-container">
+        <input type="text" id="userInput" placeholder="Ask anything or describe your project..." autofocus>
+        <button id="sendBtn" onclick="sendMessage()">SEND</button>
+    </div>
 </main>
 
-<footer>
-    <span>© 2026 VÉRION STUDIO. ALL RIGHTS RESERVED.</span>
-    <span>VÉRION.AI INTELLIGENCE</span>
-</footer>
+<script>
+    const WORKER_URL = "https://verion-ai.verionstudio.workers.dev";
+    let currentMode = "general";
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const mode = params.get("mode");
+        const input = document.getElementById("userInput");
+        const badge = document.getElementById("modeBadge");
+
+        if (mode === "script") {
+            currentMode = "script";
+            input.placeholder = "Describe your video topic or product...";
+            badge.innerText = "SCRIPT GEN";
+        } else if (mode === "caption") {
+            currentMode = "caption";
+            input.placeholder = "Describe what your post is about...";
+            badge.innerText = "CAPTION GEN";
+        } else if (mode === "ideas") {
+            currentMode = "ideas";
+            input.placeholder = "Enter your niche or industry...";
+            badge.innerText = "CONTENT IDEAS";
+        } else if (mode === "roadmap") {
+            currentMode = "roadmap";
+            input.placeholder = "Enter your platform and current level...";
+            badge.innerText = "GROWTH ROADMAP";
+        } else {
+            currentMode = "general";
+            input.placeholder = "Ask anything or describe your project...";
+            badge.innerText = "GENERAL";
+        }
+        input.focus();
+    });
+
+    async function sendMessage() {
+        const input = document.getElementById("userInput");
+        const messageLog = document.getElementById("messageLog");
+        const sendBtn = document.getElementById("sendBtn");
+        
+        const text = input.value.trim();
+        if (!text) return;
+
+        const userBubble = document.createElement("div");
+        userBubble.className = "chat-bubble user";
+        userBubble.innerText = text;
+        messageLog.appendChild(userBubble);
+
+        input.value = "";
+        messageLog.scrollTop = messageLog.scrollHeight;
+
+        input.disabled = true;
+        sendBtn.disabled = true;
+
+        const aiBubble = document.createElement("div");
+        aiBubble.className = "chat-bubble ai";
+        aiBubble.innerText = "Thinking...";
+        messageLog.appendChild(aiBubble);
+        messageLog.scrollTop = messageLog.scrollHeight;
+
+        try {
+            const response = await fetch(WORKER_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: text, mode: currentMode })
+            });
+
+            const data = await response.json();
+            if (data.reply) {
+                aiBubble.innerText = data.reply;
+            } else {
+                aiBubble.innerText = "VÉRION.AI encountered an issue. Please try again.";
+            }
+        } catch (err) {
+            aiBubble.innerText = "Connection error. Please check your network or worker status.";
+        } finally {
+            input.disabled = false;
+            sendBtn.disabled = false;
+            input.focus();
+            messageLog.scrollTop = messageLog.scrollHeight;
+        }
+    }
+
+    document.getElementById("userInput").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") sendMessage();
+    });
+</script>
 
 </body>
 </html>
