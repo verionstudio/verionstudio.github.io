@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VÉRION STUDIO | Creative Agency & VÉRION.AI</title>
+<title>VÉRION.AI | Intelligent Studio Assistant</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
 :root {
     --bg: #090909;
@@ -23,21 +22,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
 }
 
 body {
     background: var(--bg);
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
-    line-height: 1.6;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* HEADER */
 header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
     background: rgba(9, 9, 9, 0.94);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
@@ -50,7 +47,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 22px;
 }
 
 .logo {
@@ -59,19 +55,6 @@ header {
     letter-spacing: 2px;
     color: var(--gold-light);
     text-decoration: none;
-    white-space: nowrap;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-
-nav::-webkit-scrollbar {
-    display: none;
 }
 
 nav a {
@@ -80,7 +63,6 @@ nav a {
     color: var(--text-muted);
     text-decoration: none;
     text-transform: uppercase;
-    white-space: nowrap;
     transition: .25s;
 }
 
@@ -88,317 +70,145 @@ nav a:hover {
     color: var(--gold-light);
 }
 
-/* HERO SECTION */
-.hero {
-    width: min(1200px, 94%);
+/* CHAT CONTAINER */
+.chat-container {
+    flex: 1;
+    width: min(900px, 94%);
     margin: auto;
-    padding: 110px 0 90px;
-    border-bottom: 1px solid var(--border);
-}
-
-.hero-tag {
-    font-size: .72rem;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 18px;
-}
-
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.6rem, 6vw, 4.6rem);
-    font-weight: 400;
-    line-height: 1.12;
-    max-width: 780px;
-    margin-bottom: 24px;
-}
-
-.hero h1 span {
-    color: var(--gold-light);
-}
-
-.hero p {
-    color: var(--text-muted);
-    max-width: 540px;
-    font-size: .98rem;
-    margin-bottom: 38px;
-}
-
-/* BUTTONS - UNIFORM OUTLINE STYLE */
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-.btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 260px !important;
-    padding: 14px 24px !important;
-    background: transparent !important;
-    border: 1px solid var(--gold) !important;
-    color: var(--gold-light) !important;
-    font-size: .75rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: .25s;
-    cursor: pointer;
-    text-align: center;
-}
-
-.btn:hover {
-    background: var(--gold) !important;
-    color: #090909 !important;
-}
-
-.btn-filled {
-    background: transparent;
-    border-color: var(--gold);
-    color: var(--gold-light);
-}
-
-.btn-filled:hover {
-    background: var(--gold);
-    color: #090909;
-}
-
-.tagline-strip {
-    margin-top: 64px;
-    font-size: .68rem;
-    letter-spacing: 3px;
-    color: #777;
-    text-transform: uppercase;
-}
-
-/* SECTIONS */
-section {
-    width: min(1200px, 94%);
-    margin: auto;
-    padding: 90px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.sec-tag {
-    font-size: .7rem;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.sec-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 48px;
-}
-
-.sec-title span {
-    color: var(--gold-light);
-}
-
-/* GRID & CARDS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-}
-
-.card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 36px 30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-decoration: none;
-    color: inherit;
-    transition: .3s ease;
+    padding: 20px 0;
+    max-height: calc(100vh - 100px);
 }
 
-.card:hover {
-    border-color: var(--gold-light);
-    transform: translateY(-4px);
-}
-
-.card-num {
-    font-size: .72rem;
-    letter-spacing: 2px;
-    color: var(--gold);
-    margin-bottom: 18px;
-}
-
-.card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 12px;
-}
-
-.card p {
-    font-size: .88rem;
-    color: var(--text-muted);
-    margin-bottom: 24px;
-}
-
-.card-link {
-    font-size: .7rem;
-    letter-spacing: 1.5px;
-    color: var(--gold-light);
-    text-transform: uppercase;
-}
-
-/* FOOTER */
-footer {
-    width: min(1200px, 94%);
-    margin: auto;
-    padding: 50px 0;
+.chat-box {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 24px;
+    overflow-y: auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    font-size: .75rem;
-    color: #777;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
 }
 
-@media (max-width: 760px) {
-    .nav-wrap {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 16px 0 12px;
-        gap: 14px;
-    }
-    nav {
-        width: 100%;
-        gap: 18px;
-    }
-    .hero {
-        padding: 70px 0 60px;
-    }
-    .btn {
-        width: 100%;
-        max-width: 280px;
-    }
+.message {
+    padding: 14px 18px;
+    font-size: .92rem;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.message.ai {
+    background: rgba(200, 168, 120, 0.08);
+    border: 1px solid var(--border);
+    color: var(--text);
+    align-self: flex-start;
+}
+
+.message.user {
+    background: var(--gold);
+    color: #090909;
+    align-self: flex-end;
+    font-weight: 500;
+}
+
+/* INPUT AREA */
+.chat-input-area {
+    display: flex;
+    gap: 12px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem;
+    outline: none;
+    transition: .25s;
+}
+
+.chat-input-area input:focus {
+    border-color: var(--gold-light);
+}
+
+.chat-input-area button {
+    background: var(--gold);
+    color: #090909;
+    border: none;
+    padding: 0 28px;
+    font-size: .75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.chat-input-area button:hover {
+    background: var(--gold-light);
 }
 </style>
 </head>
-
 <body>
 
 <header>
     <div class="nav-wrap">
         <a href="index.html" class="logo">VÉRION STUDIO</a>
         <nav>
-            <a href="index.html">HOME</a>
-            <a href="verion-ai.html">VÉRION.AI</a>
-            <a href="advertisements.html">OUR ADVERTISEMENTS</a>
-            <a href="#services">SERVICES</a>
-            <a href="#make-content">MAKE YOUR OWN CONTENT</a>
+            <a href="index.html">← BACK TO HOME</a>
         </nav>
     </div>
 </header>
 
-<main>
-    <div class="hero">
-        <div class="hero-tag">CREATIVE PRODUCTION & AI STUDIO</div>
-        <h1>Visionary ideas, <span>exceptional execution.</span></h1>
-        <p>We bring ideas to life through creative advertising, intelligent content creation and strategic brand storytelling.</p>
-        
-        <div class="hero-actions">
-            <a class="btn" href="#services">Explore Services</a>
-            <a class="btn" href="verion-ai.html">Discover VÉRION.AI</a>
-        </div>
-
-        <div class="tagline-strip">THINK DIFFERENTLY. CREATE DISTINCTIVELY.</div>
+<div class="chat-container">
+    <div class="chat-box" id="chatBox">
+        <div class="message ai">Welcome to VÉRION.AI. How can I assist you with your content strategy or creative scripting today?</div>
     </div>
+    
+    <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="Type your message or prompt here..." autofocus>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
 
-    <section id="services">
-        <div class="sec-tag">WHAT WE DO</div>
-        <h2 class="sec-title">Creative services, <span>without compromise.</span></h2>
+<script>
+function sendMessage() {
+    const input = document.getElementById('userInput');
+    const chatBox = document.getElementById('chatBox');
+    const text = input.value.trim();
 
-        <div class="grid">
-            <a href="advertisements.html" class="card">
-                <div>
-                    <div class="card-num">01</div>
-                    <h3>Advertisements</h3>
-                    <p>High-impact visual campaigns engineered to capture attention and elevate brand perception.</p>
-                </div>
-                <span class="card-link">EXPLORE WORK →</span>
-            </a>
+    if (!text) return;
 
-            <a href="social-media.html" class="card">
-                <div>
-                    <div class="card-num">02</div>
-                    <h3>Social Media Content</h3>
-                    <p>Scroll-stopping short-form reels and visual assets tailored for modern digital platforms.</p>
-                </div>
-                <span class="card-link">EXPLORE WORK →</span>
-            </a>
+    // Append User Message
+    const userMsg = document.createElement('div');
+    userMsg.className = 'message user';
+    userMsg.textContent = text;
+    chatBox.appendChild(userMsg);
 
-            <a href="brand-commercials.html" class="card">
-                <div>
-                    <div class="card-num">03</div>
-                    <h3>Brand Commercials</h3>
-                    <p>Distinctive visual storytelling that brings a brand's identity, personality and message to life.</p>
-                </div>
-                <span class="card-link">EXPLORE WORK →</span>
-            </a>
-        </div>
-    </section>
+    input.value = '';
+    chatBox.scrollTop = chatBox.scrollHeight;
 
-    <section id="make-content">
-        <div class="sec-tag">POWERED BY VÉRION.AI</div>
-        <h2 class="sec-title">Make your <span>own content.</span></h2>
+    // Simulate AI Response
+    setTimeout(() => {
+        const aiMsg = document.createElement('div');
+        aiMsg.className = 'message ai';
+        aiMsg.textContent = "I've processed your request. Let's build out this creative concept for your brand.";
+        chatBox.appendChild(aiMsg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 800);
+}
 
-        <div class="grid">
-            <a href="verion-ai.html?mode=script" class="card">
-                <div>
-                    <div class="card-num">AI TOOL / 01</div>
-                    <h3>Script Generator</h3>
-                    <p>Generate cinematic video ad scripts with clear visual directions, pacing, and hooks.</p>
-                </div>
-                <span class="card-link">LAUNCH GENERATOR →</span>
-            </a>
-
-            <a href="verion-ai.html?mode=caption" class="card">
-                <div>
-                    <div class="card-num">AI TOOL / 02</div>
-                    <h3>Caption Generator</h3>
-                    <p>Craft luxury-toned social media copy and strategic hashtag sets in seconds.</p>
-                </div>
-                <span class="card-link">LAUNCH GENERATOR →</span>
-            </a>
-
-            <a href="verion-ai.html?mode=ideas" class="card">
-                <div>
-                    <div class="card-num">AI TOOL / 03</div>
-                    <h3>Content Ideas</h3>
-                    <p>Unlock viral-ready creative concepts and angles tailored specifically to your niche.</p>
-                </div>
-                <span class="card-link">LAUNCH GENERATOR →</span>
-            </a>
-
-            <a href="verion-ai.html?mode=roadmap" class="card">
-                <div>
-                    <div class="card-num">AI TOOL / 04</div>
-                    <h3>Growth Roadmaps</h3>
-                    <p>Build actionable 30-day execution plans to scale your audience and brand authority.</p>
-                </div>
-                <span class="card-link">LAUNCH GENERATOR →</span>
-            </a>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <span>© 2026 VÉRION STUDIO. ALL RIGHTS RESERVED.</span>
-    <span>VÉRION.AI INTELLIGENCE</span>
-</footer>
+document.getElementById('userInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+</script>
 
 </body>
 </html>
