@@ -19,88 +19,79 @@ body {
     background: #060606;
     color: #f2eee3;
     font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 header {
-    padding: 22px 6%;
+    padding: 18px 6%;
     border-bottom: 1px solid rgba(216, 189, 136, 0.15);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(6, 6, 6, 0.8);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    background: rgba(6, 6, 6, 0.94);
+    backdrop-filter: blur(14px);
+    z-index: 100;
 }
 
 .logo {
     font-family: 'Playfair Display', serif;
     color: #d8bd88;
-    font-size: 20px;
-    letter-spacing: 3px;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
     text-decoration: none;
 }
 
 nav a {
-    color: #bda477;
+    color: #c3beb5;
     text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 2px;
-    transition: 0.2s;
+    font-size: .72rem;
+    letter-spacing: 1px;
+    transition: 0.25s;
+    font-weight: 500;
 }
 
 nav a:hover {
-    color: #f2eee3;
+    color: #e1c69b;
 }
 
-main {
-    max-width: 800px;
-    width: 90%;
-    margin: 40px auto;
+/* Seamless fullscreen layout */
+.chat-main {
     flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 76px);
 }
 
-.chat-container {
-    background: #0e0e0d;
-    border: 1px solid rgba(216, 189, 136, 0.2);
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    height: 70vh;
-    min-height: 500px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    overflow: hidden;
-}
-
-.chat-header {
-    padding: 20px 24px;
-    border-bottom: 1px solid rgba(216, 189, 136, 0.12);
-    background: #121211;
+.chat-header-bar {
+    padding: 18px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid rgba(216, 189, 136, 0.12);
+    background: rgba(6, 6, 6, 0.5);
 }
 
 .chat-title {
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
+    font-size: 1.1rem;
     color: #d8bd88;
+    letter-spacing: 1px;
 }
 
 .mode-badge {
-    font-size: 10px;
-    letter-spacing: 1.5px;
+    font-size: .65rem;
+    letter-spacing: 2px;
     background: rgba(216, 189, 136, 0.1);
-    color: #d8bd88;
-    padding: 4px 10px;
+    color: #e1c69b;
+    padding: 5px 14px;
     border-radius: 20px;
-    border: 1px solid rgba(216, 189, 136, 0.2);
+    border: 1px solid rgba(216, 189, 136, 0.22);
 }
 
 .message-log {
@@ -109,51 +100,51 @@ main {
     padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     scroll-behavior: smooth;
 }
 
 .message-log::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
 }
 .message-log::-webkit-scrollbar-thumb {
-    background: #2a251d;
+    background: #222;
     border-radius: 3px;
 }
 
 .chat-bubble {
-    padding: 14px 18px;
+    padding: 16px 20px;
     border-radius: 12px;
-    font-size: 14px;
+    font-size: .92rem;
     line-height: 1.6;
-    max-width: 85%;
+    max-width: 82%;
     white-space: pre-wrap;
     animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
+    from { opacity: 0; transform: translateY(4px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .chat-bubble.ai {
-    background: #171614;
-    border: 1px solid rgba(216, 189, 136, 0.15);
-    color: #f2eee3;
+    background: #111111;
+    border: 1px solid rgba(216, 189, 136, 0.18);
+    color: #f5f2ec;
     align-self: flex-start;
 }
 
 .chat-bubble.user {
-    background: #d8bd88;
-    color: #0e0e0d;
+    background: #c8a878;
+    color: #090909;
     align-self: flex-end;
     font-weight: 500;
 }
 
-.input-area {
-    padding: 16px 20px;
-    background: #121211;
-    border-top: 1px solid rgba(216, 189, 136, 0.12);
+.input-container {
+    padding: 20px 24px;
+    background: #060606;
+    border-top: 1px solid rgba(216, 189, 136, 0.15);
     display: flex;
     gap: 12px;
     align-items: center;
@@ -161,50 +152,43 @@ main {
 
 input {
     flex: 1;
-    background: #060606;
+    background: #111111;
     border: 1px solid rgba(216, 189, 136, 0.25);
-    border-radius: 10px;
+    border-radius: 12px;
     outline: none;
-    color: #f2eee3;
-    padding: 14px 16px;
-    font-size: 14px;
+    color: #f5f2ec;
+    padding: 15px 18px;
+    font-size: .92rem;
     font-family: 'DM Sans', sans-serif;
-    transition: 0.2s;
+    transition: 0.25s;
 }
 
 input:focus {
-    border-color: #d8bd88;
+    border-color: #c8a878;
 }
 
 button {
-    background: #d8bd88;
+    background: #c8a878;
     border: none;
-    padding: 0 24px;
-    height: 47px;
-    color: #0e0e0d;
-    border-radius: 10px;
+    padding: 0 28px;
+    height: 50px;
+    color: #090909;
+    border-radius: 12px;
     font-weight: 600;
-    font-size: 13px;
+    font-size: .78rem;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.25s;
+    text-transform: uppercase;
 }
 
 button:hover {
-    background: #e2cca1;
+    background: #e1c69b;
 }
 
 button:disabled, input:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #665f52;
-    font-size: 11px;
-    letter-spacing: 2px;
 }
 </style>
 </head>
@@ -214,31 +198,25 @@ footer {
 <header>
     <a href="index.html" class="logo">VÉRION STUDIO</a>
     <nav>
-        <a href="index.html">← HOME</a>
+        <a href="index.html">← BACK TO HOME</a>
     </nav>
 </header>
     
-<main>
-    <div class="chat-container">
-        <div class="chat-header">
-            <span class="chat-title">VÉRION.AI Intelligence</span>
-            <span class="mode-badge" id="modeBadge">GENERAL</span>
-        </div>
+<main class="chat-main">
+    <div class="chat-header-bar">
+        <span class="chat-title">VÉRION.AI Intelligence</span>
+        <span class="mode-badge" id="modeBadge">GENERAL</span>
+    </div>
 
-        <div class="message-log" id="messageLog">
-            <div class="chat-bubble ai">Welcome to VÉRION.AI. How can I assist your creative vision today?</div>
-        </div>
+    <div class="message-log" id="messageLog">
+        <div class="chat-bubble ai">Welcome to VÉRION.AI. How can I assist your creative vision today?</div>
+    </div>
 
-        <div class="input-area">
-            <input type="text" id="userInput" placeholder="Ask anything or describe your project..." autofocus>
-            <button id="sendBtn" onclick="sendMessage()">SEND</button>
-        </div>
+    <div class="input-container">
+        <input type="text" id="userInput" placeholder="Ask anything or describe your project..." autofocus>
+        <button id="sendBtn" onclick="sendMessage()">SEND</button>
     </div>
 </main>
-
-<footer>
-    VÉRION STUDIO · ALL RIGHTS RESERVED
-</footer>
 
 <script>
     const WORKER_URL = "https://verion-ai.verionstudio.workers.dev";
