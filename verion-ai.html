@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,36 +86,72 @@ h1 span {
     margin-bottom: 12px;
 }
 
-.message {
-    color: #aaa;
+.message-log {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 5px;
+}
+
+.chat-bubble {
+    padding: 12px 16px;
+    border-radius: 8px;
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.6;
+    max-width: 85%;
+    white-space: pre-wrap;
+}
+
+.chat-bubble.ai {
+    background: #171511;
+    border: 1px solid #393127;
+    color: #eee9df;
+    align-self: flex-start;
+}
+
+.chat-bubble.user {
+    background: #d8bd88;
+    color: #111;
+    align-self: flex-end;
+    font-weight: 500;
 }
 
 .shortcuts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .shortcut {
     background: #111;
     border: 1px solid #393127;
     color: #e5d8bf;
-    padding: 17px 10px;
+    padding: 14px 10px;
     border-radius: 7px;
     font-size: 13px;
     text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.shortcut:hover {
+    border-color: #d8bd88;
+    background: #171511;
 }
 
 .input-area {
-    margin-top: 35px;
+    margin-top: 20px;
     display: flex;
     gap: 10px;
     border: 1px solid #51432e;
     padding: 8px;
     border-radius: 8px;
+    background: #080808;
 }
 
 input {
@@ -137,12 +172,20 @@ button {
     color: #111;
     border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #e1c69b;
 }
 
 .note {
-    color: #68635b;
+    color: #bda477;
     font-size: 11px;
     margin-top: 15px;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
 footer {
@@ -171,7 +214,6 @@ footer {
 
 <body>
 
-
 <header>
     <div class="logo">VÉRION</div>
     <nav>
@@ -179,7 +221,6 @@ footer {
     </nav>
 </header>
     
-
 <main>
 
     <div class="tag">INTRODUCING</div>
@@ -196,27 +237,24 @@ footer {
 
         <div class="welcome">Welcome to VÉRION.AI.</div>
 
-        <p class="message">
-            What are we creating today?
-            Tell us your idea, ask a question, or choose a starting point below.
-        </p>
+        <div class="message-log" id="messageLog">
+            <div class="chat-bubble ai">What are we creating today? Tell us your idea, ask a question, or choose a starting point below.</div>
+        </div>
 
         <div class="shortcuts">
-            <div class="shortcut">Script Generator</div>
-            <div class="shortcut">Caption Generator</div>
-            <div class="shortcut">Content Ideas</div>
-            <div class="shortcut">Growth Roadmaps</div>
+            <div class="shortcut" onclick="setMode('script', 'Write a commercial video ad script about: ')">Script Generator</div>
+            <div class="shortcut" onclick="setMode('caption', 'Write 3 luxury social media captions for: ')">Caption Generator</div>
+            <div class="shortcut" onclick="setMode('ideas', 'Give me 5 creative content concepts for: ')">Content Ideas</div>
+            <div class="shortcut" onclick="setMode('roadmap', 'Build a 30-day audience growth roadmap for: ')">Growth Roadmaps</div>
         </div>
 
         <div class="input-area">
-            <input type="text"
-            placeholder="Tell us what you have in mind..."
-            disabled>
-            <button disabled>Send</button>
+            <input type="text" id="userInput" placeholder="Tell us what you have in mind..." autofocus>
+            <button id="sendBtn" onclick="sendMessage()">Send</button>
         </div>
 
-        <p class="note">
-            VÉRION.AI · COMING SOON
+        <p class="note" id="modeIndicator">
+            ACTIVE MODE: GENERAL ASSISTANT
         </p>
 
     </section>
@@ -226,6 +264,80 @@ footer {
 <footer>
     VÉRION STUDIO · IDEAS DESERVE EXCEPTIONAL EXECUTION.
 </footer>
+
+<script>
+    // Live Cloudflare Worker Backend URL
+    const WORKER_URL = "https://verion-ai.verionstudio.workers.dev";
+
+    let currentMode = "general";
+
+    function setMode(mode, promptPrefix) {
+        currentMode = mode;
+        const input = document.getElementById("userInput");
+        input.value = promptPrefix;
+        input.focus();
+        document.getElementById("modeIndicator").innerText = "ACTIVE MODE: " + mode.toUpperCase();
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById("userInput");
+        const messageLog = document.getElementById("messageLog");
+        const sendBtn = document.getElementById("sendBtn");
+        
+        const text = input.value.trim();
+        if (!text) return;
+
+        // Append user message
+        const userBubble = document.createElement("div");
+        userBubble.className = "chat-bubble user";
+        userBubble.innerText = text;
+        messageLog.appendChild(userBubble);
+
+        input.value = "";
+        messageLog.scrollTop = messageLog.scrollHeight;
+
+        // Disable input while loading
+        input.disabled = true;
+        sendBtn.disabled = true;
+
+        // Append loading AI bubble
+        const aiBubble = document.createElement("div");
+        aiBubble.className = "chat-bubble ai";
+        aiBubble.innerText = "Thinking...";
+        messageLog.appendChild(aiBubble);
+        messageLog.scrollTop = messageLog.scrollHeight;
+
+        try {
+            const response = await fetch(WORKER_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: text, mode: currentMode })
+            });
+
+            const data = await response.json();
+            
+            if (data.reply) {
+                aiBubble.innerText = data.reply;
+            } else {
+                aiBubble.innerText = "VÉRION.AI encountered an issue. Please try again.";
+            }
+        } catch (err) {
+            aiBubble.innerText = "Connection error. Please check your network or worker status.";
+        } finally {
+            input.disabled = false;
+            sendBtn.disabled = false;
+            input.focus();
+            messageLog.scrollTop = messageLog.scrollHeight;
+        }
+    }
+
+    // Allow pressing Enter to send
+    document.getElementById("userInput").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            sendMessage();
+        }
+    });
+</script>
 
 </body>
 </html>
