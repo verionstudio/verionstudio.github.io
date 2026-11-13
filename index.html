@@ -124,7 +124,7 @@ nav a:hover {
     margin-bottom: 38px;
 }
 
-/* BUTTONS - UNIFORM OUTLINE STYLE */
+/* BUTTONS */
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -135,23 +135,33 @@ nav a:hover {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 260px !important;
-    padding: 14px 24px !important;
-    background: transparent !important;
-    border: 1px solid var(--gold) !important;
-    color: var(--gold-light) !important;
+    padding: 14px 28px;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
     font-size: .75rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     text-decoration: none;
     transition: .25s;
     cursor: pointer;
+    background: transparent;
     text-align: center;
 }
 
 .btn:hover {
-    background: var(--gold) !important;
-    color: #090909 !important;
+    background: var(--gold);
+    color: #090909;
+}
+
+.btn-filled {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #090909;
+}
+
+.btn-filled:hover {
+    background: transparent;
+    color: var(--gold-light);
 }
 
 .tagline-strip {
@@ -269,8 +279,8 @@ footer {
     .hero {
         padding: 70px 0 60px;
     }
-    .btn {
-        width: 100% !important;
+    .btn, .btn-filled {
+        width: 100%;
         max-width: 280px;
     }
 }
@@ -294,12 +304,12 @@ footer {
 
 <main>
     <div class="hero">
-        <div class="hero-tag">CREATIVE PRODUCTION & AI STUDIO</div>
-        <h1>Visionary ideas, <span>exceptional execution.</span></h1>
+        <div class="hero-tag">CREATIVE STUDIO · INTELLIGENT CONTENT</div>
+        <h1>Ideas deserve <span>exceptional execution.</span></h1>
         <p>We bring ideas to life through creative advertising, intelligent content creation and strategic brand storytelling.</p>
         
         <div class="hero-actions">
-            <a class="btn" href="#services">Explore Services</a>
+            <a class="btn btn-filled" href="#services">Explore Services</a>
             <a class="btn" href="verion-ai.html">Discover VÉRION.AI</a>
         </div>
 
