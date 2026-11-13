@@ -244,7 +244,6 @@ footer {
     const WORKER_URL = "https://verion-ai.verionstudio.workers.dev";
     let currentMode = "general";
 
-    // Auto-detect mode if coming from shortcuts on index.html
     window.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
         const mode = params.get("mode");
