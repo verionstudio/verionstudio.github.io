@@ -124,18 +124,20 @@ nav a:hover {
     margin-bottom: 38px;
 }
 
-/* BUTTONS */
+/* BUTTONS - EQUAL WIDTH FIX */
 .hero-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
 }
 
 .btn {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 28px;
+    width: 270px; /* Forces both buttons to be exactly equal width */
+    padding: 14px 20px;
     border: 1px solid var(--gold);
     color: var(--gold-light);
     font-size: .75rem;
@@ -280,8 +282,7 @@ footer {
         padding: 70px 0 60px;
     }
     .btn, .btn-filled {
-        width: 100%;
-        max-width: 280px;
+        width: 270px;
     }
 }
 </style>
