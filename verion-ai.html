@@ -77,7 +77,7 @@ nav a:hover {
 }
 
 .chat-header-bar {
-    padding: 18px 24px;
+    padding: 16px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -249,19 +249,19 @@ button:disabled, input:disabled {
 
         if (mode === "script") {
             currentMode = "script";
-            input.value = "Write a commercial video ad script about: ";
+            input.placeholder = "Describe your video topic or product...";
             badge.innerText = "SCRIPT GENERATOR";
         } else if (mode === "caption") {
             currentMode = "caption";
-            input.value = "Write 3 luxury social media captions for: ";
+            input.placeholder = "Describe what your post is about...";
             badge.innerText = "CAPTION GENERATOR";
         } else if (mode === "ideas") {
             currentMode = "ideas";
-            input.value = "Give me 5 creative content concepts for: ";
+            input.placeholder = "Enter your niche or industry...";
             badge.innerText = "CONTENT IDEAS";
         } else if (mode === "roadmap") {
             currentMode = "roadmap";
-            input.value = "Build a 30-day audience growth roadmap for: ";
+            input.placeholder = "Enter your platform and current level...";
             badge.innerText = "GROWTH ROADMAPS";
         }
         input.focus();
