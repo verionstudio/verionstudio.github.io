@@ -23,7 +23,7 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; line-height: 1.7; }
+body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; line-height: 1.7; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 .container { width: min(1120px, 90%); margin: auto; }
@@ -442,14 +442,18 @@ const STUDIO_WHATSAPP = "917569968727";
 const DEFAULT_MSG = "Hey VÉRION STUDIO, I'm interested in your work. I'd like to discuss a project with you.";
 let currentMsg = DEFAULT_MSG;
 
-// Builds the message from the service tapped, with the word "Generator" removed.
+const SERVICE_NAMES = {
+  "a Script Generator": "a script",
+  "a Caption Generator": "captions",
+  "a Content Ideas generator": "content ideas",
+  "a Growth Roadmap": "a growth roadmap",
+  "a script-to-video production": "a script-to-video production"
+};
+
 function prefill(service) {
-  if (service) {
-    const clean = service.replace(/generator/i, "").replace(/\s+/g, " ").trim();
-    currentMsg = "Hey VÉRION STUDIO, I'm interested in your work. I'd like to request " + clean + ". Could we discuss the details?";
-  } else {
-    currentMsg = DEFAULT_MSG;
-  }
+  currentMsg = service
+    ? "Hey VÉRION STUDIO, I'm interested in your work. I'd like to request " + (SERVICE_NAMES[service] || service) + ". Could we discuss the details?"
+    : DEFAULT_MSG;
 }
 
 function sendWhatsApp(e) {
