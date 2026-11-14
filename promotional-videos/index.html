@@ -1,204 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Promotional Videos | VÉRION STUDIO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promotional Videos | VÉRION STUDIO</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
-    body {
-      background: #0b0b0a;
-      color: #eee9df;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      padding: 25px 7%;
-      border-bottom: 1px solid #29251f;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      color: #d6c19a;
-      letter-spacing: 3px;
-      font-size: 17px;
-    }
-
-    
-header a {
-  color: #d6bd8a;
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 2px;
+<style>
+:root {
+  --bg: #090909; --surface: #111111; --gold: #c8a878; --gold-light: #e1c69b;
+  --white: #f5f2ec; --muted: #a09a90; --border: rgba(200,168,120,.22);
 }
-    
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; line-height: 1.7; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; line-height: 1.2; }
+.container { width: min(1120px, 90%); margin: auto; }
 
-    .hero {
-      text-align: center;
-      padding: 105px 20px 75px;
-    }
+header { position: sticky; top: 0; z-index: 100; background: rgba(9,9,9,.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+.nav-wrap { width: min(1200px, 94%); margin: auto; min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+.logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; letter-spacing: 2px; color: var(--gold-light); }
 
-    .eyebrow {
-      color: #a99b83;
-      font-size: 11px;
-      letter-spacing: 3px;
-      margin-bottom: 22px;
-    }
+.btn { display: inline-flex; justify-content: center; align-items: center; padding: 13px 23px; border: 1px solid var(--gold); color: var(--gold-light); font-size: .78rem; letter-spacing: 1px; text-transform: uppercase; transition: .25s; cursor: pointer; background: transparent; }
+.btn:hover { background: var(--gold); color: #090909; }
+.btn-filled { background: var(--gold); color: #090909; }
+.btn-filled:hover { background: var(--gold-light); }
 
-    h1 {
-      font-size: clamp(34px, 6vw, 58px);
-      font-weight: 400;
-      line-height: 1.2;
-    }
+.page-top { padding: 60px 0 30px; text-align: center; }
+.back-wrap { margin-bottom: 40px; }
+.eyebrow { color: var(--gold); font-size: .72rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 17px; }
+.page-top h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); }
+.page-top h1 span { color: var(--gold-light); }
+.intro { color: var(--muted); max-width: 620px; margin: 17px auto 0; }
 
-    .gold {
-      color: #d6c19a;
-    }
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; padding: 30px 0 80px; }
+.video-card { position: relative; width: 100%; aspect-ratio: 9 / 16; background: var(--surface); border: 1px solid var(--border); overflow: hidden; }
+.video-card iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-    .intro {
-      max-width: 570px;
-      margin: 22px auto 0;
-      color: #a99b83;
-      font-size: 14px;
-      line-height: 1.9;
-    }
+.empty { display: none; text-align: center; color: var(--muted); padding: 60px 0 90px; }
 
-    .projects {
-      max-width: 1100px;
-      margin: auto;
-      padding: 35px 25px 100px;
-    }
-
-    .section-heading {
-      border-bottom: 1px solid #29251f;
-      padding-bottom: 20px;
-      margin-bottom: 35px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .section-heading h2 {
-      font-size: 19px;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
-
-    .section-heading span {
-      color: #a99b83;
-      font-size: 10px;
-      letter-spacing: 2px;
-    }
-
-    .empty-state {
-      border: 1px solid #29251f;
-      background: #11100e;
-      padding: 65px 20px;
-      text-align: center;
-    }
-
-    .empty-state h3 {
-      color: #d6c19a;
-      font-weight: 400;
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
-
-    .empty-state p {
-      color: #a99b83;
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .contact {
-      text-align: center;
-      padding: 65px 20px;
-      border-top: 1px solid #29251f;
-    }
-
-    .contact a {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 25px;
-      border: 1px solid #a99b83;
-      color: #d6c19a;
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 2px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 15px;
-      border-top: 1px solid #29251f;
-      color: #a99b83;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-  </style>
+footer { padding: 30px 0; border-top: 1px solid var(--border); text-align: center; color: #817b72; font-size: .72rem; letter-spacing: 1px; }
+footer .btn { margin-top: 18px; }
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">VÉRION STUDIO</div>
-  <a href="../index.html">← BACK TO HOME</a>
+  <div class="nav-wrap">
+    <a class="logo" href="../index.html">VÉRION STUDIO</a>
+  </div>
 </header>
 
-<section class="hero">
-  <p class="eyebrow">OUR CREATIVE WORK / 02</p>
+<main class="container">
+  <section class="page-top">
+    <div class="back-wrap">
+      <a class="btn" href="../index.html">← BACK TO HOME</a>
+    </div>
+    <p class="eyebrow">PROMOTIONAL VIDEOS</p>
+    <h1>Our <span>promotional videos.</span></h1>
+    <p class="intro">Engaging promotional videos for businesses, brands, launches and campaigns.</p>
+  </section>
 
-  <h1>Promotional <span class="gold">Videos.</span></h1>
-
-  <p class="intro">
-    Purposeful visual storytelling for businesses,
-    brands, launches and campaigns.
-    Every project is created with its own direction
-    and identity.
-  </p>
-</section>
-
-<section class="projects">
-
-  <div class="section-heading">
-    <h2>Selected Projects</h2>
-    <span>OUR PORTFOLIO</span>
-  </div>
-
-  <div class="empty-state">
-    <h3>New projects are in development.</h3>
-    <p>
-      Our promotional work will be presented here.
-      Check back as we continue to create.
-    </p>
-  </div>
-
-  <!-- ADD NEW PROMOTIONAL PROJECTS ABOVE THIS LINE -->
-
-</section>
-
-<section class="contact">
-  <p class="eyebrow">HAVE A PROJECT IN MIND?</p>
-  <h2>Let's create something <span class="gold">remarkable.</span></h2>
-
-  <a href="../index.html#contact">
-    DISCUSS YOUR PROJECT
-  </a>
-</section>
+  <div class="video-grid" id="videoGrid"></div>
+  <p class="empty" id="emptyMsg">Videos coming soon.</p>
+</main>
 
 <footer>
-  © 2026 VÉRION STUDIO. ALL RIGHTS RESERVED.
+  <div class="container">
+    <p>VÉRION STUDIO · IDEAS DESERVE EXCEPTIONAL EXECUTION.</p>
+    <a class="btn btn-filled" href="../index.html#contact">Discuss Your Project</a>
+  </div>
 </footer>
+
+<script>
+/* ADD YOUR SHORTS HERE.
+   Paste the full YouTube Shorts link, in quotes, with a comma after it. Example:
+   "https://youtube.com/shorts/AbCdEfGhIjK",
+*/
+const VIDEOS = [
+  // "https://youtube.com/shorts/PASTE_HERE",
+];
+
+function getVideoId(value) {
+  const v = value.trim();
+  const match = v.match(/(?:shorts\/|embed\/|v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  if (match) return match[1];
+  if (/^[A-Za-z0-9_-]{11}$/.test(v)) return v;
+  return null;
+}
+
+const grid = document.getElementById("videoGrid");
+const emptyMsg = document.getElementById("emptyMsg");
+const ids = VIDEOS.map(getVideoId).filter(Boolean);
+
+if (ids.length === 0) {
+  emptyMsg.style.display = "block";
+} else {
+  ids.forEach(function (id) {
+    const card = document.createElement("div");
+    card.className = "video-card";
+    card.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '" title="VÉRION STUDIO video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+    grid.appendChild(card);
+  });
+}
+</script>
 
 </body>
 </html>
