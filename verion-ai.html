@@ -78,6 +78,20 @@ nav a {
 
 nav a:hover { color: var(--gold-light); }
 
+.settings-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--gold-light);
+  padding: 6px 12px;
+  font-size: .68rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  transition: .2s;
+}
+.settings-btn:hover { background: var(--border); }
+
 /* MODE BAR */
 .mode-bar {
   background: var(--surface);
@@ -237,9 +251,71 @@ nav a:hover { color: var(--gold-light); }
 .chat-form button:hover:not(:disabled) { background: var(--gold-light); }
 .chat-form button:disabled { opacity: .5; cursor: not-allowed; }
 
-@media (max-width: 640px) {
-  .message { max-width: 94%; font-size: .88rem; }
-  .chat-form button { padding: 0 18px; }
+/* MODAL FOR API KEY */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  display: none;
+}
+
+.modal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  width: min(440px, 100%);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-card h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold-light);
+  font-size: 1.35rem;
+}
+
+.modal-card p {
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.modal-card input {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  color: var(--white);
+  font-family: inherit;
+  font-size: .9rem;
+  outline: none;
+}
+
+.modal-card input:focus { border-color: var(--gold); }
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  background: var(--gold);
+  border: none;
+  color: #090909;
+  font-weight: 600;
+  font-size: .75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -249,6 +325,7 @@ nav a:hover { color: var(--gold-light); }
   <div class="nav-wrap">
     <a href="index.html" class="logo">VÉRION.AI</a>
     <nav>
+      <button class="settings-btn" onclick="openKeyModal()">API Key Setup</button>
       <a href="index.html">← BACK TO STUDIO</a>
     </nav>
   </div>
@@ -282,10 +359,19 @@ nav a:hover { color: var(--gold-light); }
   </form>
 </div>
 
-<script>
-// PASTE YOUR GEMINI API KEY DIRECTLY INSIDE THE QUOTES BELOW:
-const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+<!-- API KEY MODAL -->
+<div class="modal-overlay" id="keyModal">
+  <div class="modal-card">
+    <h3>Enter Gemini API Key</h3>
+    <p>Your key is saved <b>only on your device</b> (LocalStorage) and is never uploaded to GitHub or exposed publicly.</p>
+    <input type="password" id="modalKeyInput" placeholder="Paste your API key here...">
+    <div class="modal-actions">
+      <button onclick="saveApiKey()">Save Key</button>
+    </div>
+  </div>
+</div>
 
+<script>
 const MODE_CONFIG = {
   general: {
     welcome: "Welcome to VÉRION.AI. Ask questions, brainstorm ideas, or get creative assistance.",
@@ -324,6 +410,26 @@ let isGenerating = false;
 const chatBox = document.getElementById("chatBox");
 const userInput = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
+const keyModal = document.getElementById("keyModal");
+const modalKeyInput = document.getElementById("modalKeyInput");
+
+function getApiKey() {
+  return localStorage.getItem("VERION_GEMINI_KEY") || "";
+}
+
+function openKeyModal() {
+  modalKeyInput.value = getApiKey();
+  keyModal.style.display = "flex";
+}
+
+function saveApiKey() {
+  const key = modalKeyInput.value.trim();
+  if (key) {
+    localStorage.setItem("VERION_GEMINI_KEY", key);
+    keyModal.style.display = "none";
+    appendMessage("API key saved successfully on your device!", "ai");
+  }
+}
 
 function appendMessage(text, type) {
   const div = document.createElement("div");
@@ -354,10 +460,12 @@ function resetChat() {
   setMode(currentMode, false);
 }
 
-async function sendPromptToWorker(text) {
+async function sendPromptToAI(text) {
   if (isGenerating) return;
-  if (!GEMINI_API_KEY || GEMINI_API_KEY.includes("YOUR_GEMINI_API_KEY")) {
-    appendMessage("Error: Please put your Gemini API key inside verion-ai.html", "error");
+
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    openKeyModal();
     return;
   }
 
@@ -372,7 +480,6 @@ async function sendPromptToWorker(text) {
   try {
     const systemInstructionText = SYSTEM_PROMPTS[currentMode] || SYSTEM_PROMPTS.general;
     
-    // Build conversation payload for Gemini API
     const payload = {
       system_instruction: {
         parts: [{ text: systemInstructionText }]
@@ -385,7 +492,7 @@ async function sendPromptToWorker(text) {
     };
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -419,7 +526,7 @@ function handleSend(event) {
   const text = userInput.value.trim();
   if (!text || isGenerating) return;
   userInput.value = "";
-  sendPromptToWorker(text);
+  sendPromptToAI(text);
 }
 
 (function init() {
@@ -429,8 +536,13 @@ function handleSend(event) {
 
   setMode(urlMode, false);
 
+  // If no API key is saved anywhere yet, prompt the user on load
+  if (!getApiKey()) {
+    openKeyModal();
+  }
+
   if (urlPrompt && urlPrompt.trim()) {
-    sendPromptToWorker(urlPrompt.trim());
+    sendPromptToAI(urlPrompt.trim());
   }
 })();
 </script>
