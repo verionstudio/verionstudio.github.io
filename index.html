@@ -109,11 +109,7 @@ nav a:hover { color: var(--gold-light); }
 .contact-section { text-align: center; background: #11100e; border-top: 1px solid var(--border); }
 .contact-box { max-width: 900px; margin: 0 auto; border: 1px solid rgba(200,168,120,.5); border-radius: 14px; background: #0c0c0c; padding: 50px 30px; }
 .contact-lead { color: var(--muted); max-width: 560px; margin: 16px auto 8px; }
-.contact-sub { color: #7d776e; font-size: .85rem; margin-bottom: 30px; }
-.prefill-box { max-width: 700px; margin: 0 auto 32px; text-align: left; }
-.prefill-box label { color: var(--gold); font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; }
-.prefill-box textarea { width: 100%; margin-top: 12px; background: #171717; border: 1px solid var(--border); color: white; padding: 15px; font-family: inherit; font-size: .9rem; line-height: 1.6; resize: vertical; outline: none; }
-.prefill-box textarea:focus { border-color: var(--gold-light); }
+.contact-sub { color: #7d776e; font-size: .85rem; margin-bottom: 36px; }
 .contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .contact-card { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 34px 18px; border: 1px solid var(--gold); border-radius: 12px; background: #0e0e0e; transition: .25s; cursor: pointer; }
 .contact-card:hover { background: rgba(200,168,120,.08); transform: translateY(-3px); }
@@ -123,9 +119,9 @@ nav a:hover { color: var(--gold-light); }
 .contact-footer { margin-top: 30px; color: #817b72; font-size: .68rem; letter-spacing: 2px; }
 
 /* FOOTER */
-footer { padding: 30px 0; border-top: 1px solid var(--border); text-align: center; color: #817b72; font-size: .72rem; letter-spacing: 1px; }
+footer { padding: 40px 0 30px; border-top: 1px solid var(--border); text-align: center; color: #817b72; font-size: .72rem; letter-spacing: 1px; }
 footer span { color: var(--gold); }
-footer p + p { margin-top: 8px; }
+footer p + p { margin-top: 10px; }
 
 @media (max-width: 760px) {
   .nav-wrap { flex-direction: column; align-items: flex-start; padding: 15px 0 12px; gap: 12px; }
@@ -401,19 +397,14 @@ footer p + p { margin-top: 8px; }
       </p>
       <p class="contact-sub">Choose your preferred way to connect with VÉRION STUDIO.</p>
 
-      <div class="prefill-box">
-        <label for="prefillMsg">Your message</label>
-        <textarea id="prefillMsg" rows="3">Hey VÉRION STUDIO, I'm interested in your work. I'd like to discuss a project with you.</textarea>
-      </div>
-
       <div class="contact-cards">
-        <a href="#contact" class="contact-card" onclick="sendWhatsApp(); return false;">
+        <a href="#contact" class="contact-card" onclick="sendWhatsApp(event)">
           <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20l1.1-4.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
           <span class="c-title">WhatsApp</span>
           <span class="c-sub">Quick enquiries</span>
         </a>
 
-        <a href="#contact" class="contact-card" onclick="sendEmail(); return false;">
+        <a href="#contact" class="contact-card" onclick="sendEmail(event)">
           <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
           <span class="c-title">Email</span>
           <span class="c-sub">Project details</span>
@@ -444,27 +435,26 @@ footer p + p { margin-top: 8px; }
 <script>
 const STUDIO_EMAIL = "verionstudio2000@gmail.com";
 const STUDIO_WHATSAPP = "917569968727";
+const DEFAULT_MSG = "Hey VÉRION STUDIO, I'm interested in your work. I'd like to discuss a project with you.";
+let currentMsg = DEFAULT_MSG;
 
-// Fills the message box with a professional message for the service they picked.
+// Sets the message that WhatsApp and Email will send, based on what the visitor tapped.
 function prefill(service) {
-  const box = document.getElementById("prefillMsg");
-  if (service) {
-    box.value = "Hey VÉRION STUDIO, I'm interested in your work. I'd like to request " + service + ". Could we discuss the details?";
-  } else {
-    box.value = "Hey VÉRION STUDIO, I'm interested in your work. I'd like to discuss a project with you.";
-  }
+  currentMsg = service
+    ? "Hey VÉRION STUDIO, I'm interested in your work. I'd like to request " + service + ". Could we discuss the details?"
+    : DEFAULT_MSG;
 }
 
-function sendEmail() {
-  const msg = document.getElementById("prefillMsg").value;
+function sendWhatsApp(e) {
+  e.preventDefault();
+  window.open("https://wa.me/" + STUDIO_WHATSAPP + "?text=" + encodeURIComponent(currentMsg), "_blank");
+}
+
+function sendEmail(e) {
+  e.preventDefault();
   window.location.href = "mailto:" + STUDIO_EMAIL
     + "?subject=" + encodeURIComponent("Project Enquiry - VÉRION STUDIO")
-    + "&body=" + encodeURIComponent(msg);
-}
-
-function sendWhatsApp() {
-  const msg = document.getElementById("prefillMsg").value;
-  window.open("https://wa.me/" + STUDIO_WHATSAPP + "?text=" + encodeURIComponent(msg), "_blank");
+    + "&body=" + encodeURIComponent(currentMsg);
 }
 </script>
 
