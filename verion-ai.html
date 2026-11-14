@@ -283,11 +283,8 @@ nav a:hover { color: var(--gold-light); }
 </div>
 
 <script>
-// =========================================================================
-// REPLACE THIS WITH YOUR ACTUAL CLOUDFLARE WORKER URL
-// Example: "https://verion-ai.yourname.workers.dev"
-// =========================================================================
-const WORKER_URL = "YOUR_CLOUDFLARE_WORKER_URL_HERE";
+// Connected to your Cloudflare Worker URL
+const WORKER_URL = "https://verion-ai.verionstudio.workers.dev";
 
 const MODE_CONFIG = {
   general: {
@@ -360,10 +357,6 @@ async function sendPromptToWorker(text) {
   const thinkingEl = appendMessage("Thinking...", "ai");
 
   try {
-    if (!WORKER_URL || WORKER_URL === "YOUR_CLOUDFLARE_WORKER_URL_HERE") {
-      throw new Error("Cloudflare Worker URL is not set in verion-ai.html yet.");
-    }
-
     const response = await fetch(WORKER_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -400,7 +393,6 @@ function handleSend(event) {
   sendPromptToWorker(text);
 }
 
-// Initialize on page load from URL parameters (?mode=... and/or ?prompt=...)
 (function init() {
   const params = new URLSearchParams(window.location.search);
   const urlMode = params.get("mode") || "general";
