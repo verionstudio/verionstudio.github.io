@@ -22,28 +22,33 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; line-heig
 
 header { position: sticky; top: 0; z-index: 100; background: rgba(9,9,9,.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
 .nav-wrap { width: min(1200px, 94%); margin: auto; min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-.logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; letter-spacing: 2px; color: var(--gold-light); }
+.logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; letter-spacing: 2px; color: var(--gold-light); white-space: nowrap; }
+.back-link { color: var(--gold); font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; transition: .25s; }
+.back-link:hover { color: var(--gold-light); }
 
 .btn { display: inline-flex; justify-content: center; align-items: center; padding: 13px 23px; border: 1px solid var(--gold); color: var(--gold-light); font-size: .78rem; letter-spacing: 1px; text-transform: uppercase; transition: .25s; cursor: pointer; background: transparent; }
 .btn:hover { background: var(--gold); color: #090909; }
 .btn-filled { background: var(--gold); color: #090909; }
 .btn-filled:hover { background: var(--gold-light); }
 
-.page-top { padding: 60px 0 30px; text-align: center; }
-.back-wrap { margin-bottom: 40px; }
+.page-top { padding: 80px 0 40px; text-align: center; }
 .eyebrow { color: var(--gold); font-size: .72rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 17px; }
 .page-top h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); }
 .page-top h1 span { color: var(--gold-light); }
 .intro { color: var(--muted); max-width: 620px; margin: 17px auto 0; }
 
-.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; padding: 30px 0 80px; }
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; padding: 10px 0 80px; }
 .video-card { position: relative; width: 100%; aspect-ratio: 9 / 16; background: var(--surface); border: 1px solid var(--border); overflow: hidden; }
 .video-card iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-.empty { display: none; text-align: center; color: var(--muted); padding: 60px 0 90px; }
+footer { padding: 40px 0 30px; border-top: 1px solid var(--border); text-align: center; color: #817b72; font-size: .72rem; letter-spacing: 1px; }
+footer .btn { margin-bottom: 26px; }
+footer p + p { margin-top: 10px; }
 
-footer { padding: 30px 0; border-top: 1px solid var(--border); text-align: center; color: #817b72; font-size: .72rem; letter-spacing: 1px; }
-footer .btn { margin-top: 18px; }
+@media (max-width: 500px) {
+  .nav-wrap { min-height: 64px; }
+  .page-top { padding: 60px 0 30px; }
+}
 </style>
 </head>
 
@@ -52,33 +57,31 @@ footer .btn { margin-top: 18px; }
 <header>
   <div class="nav-wrap">
     <a class="logo" href="index.html">VÉRION STUDIO</a>
+    <a class="back-link" href="index.html">← Back to Home</a>
   </div>
 </header>
 
 <main class="container">
   <section class="page-top">
-    <div class="back-wrap">
-      <a class="btn" href="index.html">← BACK TO HOME</a>
-    </div>
     <p class="eyebrow">PRODUCT ADVERTISEMENTS</p>
     <h1>Our <span>advertisements.</span></h1>
     <p class="intro">Cinematic product-focused advertisements designed to present products with style and impact.</p>
   </section>
 
   <div class="video-grid" id="videoGrid"></div>
-  <p class="empty" id="emptyMsg">Videos coming soon.</p>
 </main>
 
 <footer>
   <div class="container">
-    <p>VÉRION STUDIO · IDEAS DESERVE EXCEPTIONAL EXECUTION.</p>
     <a class="btn btn-filled" href="index.html#contact">Discuss Your Project</a>
+    <p>VÉRION STUDIO · IDEAS DESERVE EXCEPTIONAL EXECUTION.</p>
+    <p>© 2026 VÉRION STUDIO. ALL RIGHTS RESERVED.</p>
   </div>
 </footer>
 
 <script>
-/* ADD YOUR SHORTS HERE.
-   Paste the full YouTube link, in quotes, with a comma after it. Example:
+/* ADD YOUR VIDEOS HERE.
+   Paste the full YouTube link in quotes, with a comma after it. Example:
    "https://youtube.com/shorts/AbCdEfGhIjK",
 */
 const VIDEOS = [
@@ -94,19 +97,12 @@ function getVideoId(value) {
 }
 
 const grid = document.getElementById("videoGrid");
-const emptyMsg = document.getElementById("emptyMsg");
-const ids = VIDEOS.map(getVideoId).filter(Boolean);
-
-if (ids.length === 0) {
-  emptyMsg.style.display = "block";
-} else {
-  ids.forEach(function (id) {
-    const card = document.createElement("div");
-    card.className = "video-card";
-    card.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '" title="VÉRION STUDIO video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
-    grid.appendChild(card);
-  });
-}
+VIDEOS.map(getVideoId).filter(Boolean).forEach(function (id) {
+  const card = document.createElement("div");
+  card.className = "video-card";
+  card.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '" title="VÉRION STUDIO video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+  grid.appendChild(card);
+});
 </script>
 
 </body>
