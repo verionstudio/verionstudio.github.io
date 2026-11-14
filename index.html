@@ -442,11 +442,14 @@ const STUDIO_WHATSAPP = "917569968727";
 const DEFAULT_MSG = "Hey VÉRION STUDIO, I'm interested in your work. I'd like to discuss a project with you.";
 let currentMsg = DEFAULT_MSG;
 
-// Sets the message that WhatsApp and Email will send, based on what the visitor tapped.
+// Builds the message from the service tapped, with the word "Generator" removed.
 function prefill(service) {
-  currentMsg = service
-    ? "Hey VÉRION STUDIO, I'm interested in your work. I'd like to request " + service + ". Could we discuss the details?"
-    : DEFAULT_MSG;
+  if (service) {
+    const clean = service.replace(/generator/i, "").replace(/\s+/g, " ").trim();
+    currentMsg = "Hey VÉRION STUDIO, I'm interested in your work. I'd like to request " + clean + ". Could we discuss the details?";
+  } else {
+    currentMsg = DEFAULT_MSG;
+  }
 }
 
 function sendWhatsApp(e) {
