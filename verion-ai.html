@@ -270,7 +270,7 @@ footer {
 
 <script>
 const WORKER_URL = "https://verion-ai.verionstudio.workers.dev";
-const history = [];
+const chatHistory = [];
 
 function fillPrompt(text) {
     const input = document.getElementById("userInput");
@@ -288,31 +288,48 @@ function addBubble(text, type) {
 }
 
 function setBusy(busy) {
-    document.getElementById("sendBtn").disabled = busy;
-    document.getElementById("sendBtn").textContent = busy ? "..." : "Send";
+    const btn = document.getElementById("sendBtn");
+    btn.disabled = busy;
+    btn.textContent = busy ? "..." : "Send";
 }
 
 async function sendToGemini(contents) {
-    const response = await fetch(WORKER_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contents: contents })
-    });
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 30000);
 
+    let response;
+    try {
+        response = await fetch(WORKER_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: contents }),
+            signal: controller.signal
+        });
+    } catch (e) {
+        if (e.name === "AbortError") {
+            throw new Error("No response after 30 seconds. The worker may be down or blocked.");
+        }
+        throw new Error("Could not reach the worker: " + e.message);
+    } finally {
+        clearTimeout(timer);
+    }
+
+    const raw = await response.text();
     let data;
     try {
-        data = await response.json();
+        data = JSON.parse(raw);
     } catch (e) {
-        throw new Error("Worker did not return JSON (status " + response.status + ")");
+        throw new Error("Worker sent a non-JSON reply (status " + response.status + "): " + raw.slice(0, 200));
     }
 
     if (!response.ok) {
-        throw new Error(data.error?.message || "Request failed with status " + response.status);
+        const msg = data?.error?.message || JSON.stringify(data).slice(0, 300);
+        throw new Error("Status " + response.status + ": " + msg);
     }
 
     const reply = data.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!reply) {
-        throw new Error("No reply received from Gemini.");
+        throw new Error("Gemini returned no text: " + JSON.stringify(data).slice(0, 300));
     }
     return reply;
 }
@@ -324,20 +341,20 @@ async function sendMessage() {
 
     input.value = "";
     addBubble(text, "user");
-    history.push({ role: "user", parts: [{ text: text }] });
+    chatHistory.push({ role: "user", parts: [{ text: text }] });
     setBusy(true);
 
     try {
-        const reply = await sendToGemini(history);
-        history.push({ role: "model", parts: [{ text: reply }] });
+        const reply = await sendToGemini(chatHistory);
+        chatHistory.push({ role: "model", parts: [{ text: reply }] });
         addBubble(reply, "ai");
     } catch (err) {
-        history.pop();
+        chatHistory.pop();
         addBubble("Error: " + err.message, "error");
+    } finally {
+        setBusy(false);
+        input.focus();
     }
-
-    setBusy(false);
-    input.focus();
 }
 </script>
 
